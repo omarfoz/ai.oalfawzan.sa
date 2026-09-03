@@ -1,53 +1,46 @@
 (() => {
-  const stages = [...document.querySelectorAll(".stage")];
-  const points = [...document.querySelectorAll(".timeline-point")];
-  const progress = document.getElementById("timelineProgress");
-
-  if (!stages.length || !points.length || !progress) return;
-
-  let active = 0;
-
-  function setActive(index) {
-    active = Math.max(0, Math.min(index, stages.length - 1));
-
-    stages.forEach((stage, i) => {
-      stage.classList.toggle("is-current", i === active);
-    });
-
-    points.forEach((point, i) => {
-      point.classList.toggle("is-active", i === active);
-      point.setAttribute("aria-current", i === active ? "step" : "false");
-    });
-
-    const width = active === 0 ? 0 : (active / (points.length - 1)) * 86;
-    progress.style.width = `${width}%`;
+  const stages=[...document.querySelectorAll('.stage')],points=[...document.querySelectorAll('.timeline-point')],progress=document.getElementById('timelineProgress');
+  if(stages.length&&points.length&&progress){
+    const setActive=i=>{i=Math.max(0,Math.min(i,stages.length-1));stages.forEach((s,n)=>s.classList.toggle('is-current',n===i));points.forEach((p,n)=>{p.classList.toggle('is-active',n===i);p.setAttribute('aria-current',n===i?'step':'false')});progress.style.width=`${i===0?0:(i/(points.length-1))*86}%`};
+    const observer=new IntersectionObserver(entries=>{const v=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);if(v.length)setActive(Number(v[0].target.dataset.stage))},{rootMargin:'-26% 0px -46% 0px',threshold:[.1,.25,.45,.65]});
+    stages.forEach(s=>observer.observe(s));points.forEach(p=>p.addEventListener('click',()=>stages[Number(p.dataset.stage)]?.scrollIntoView({behavior:'smooth',block:'start'})));setActive(0);
   }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+  const css=document.createElement('style');css.textContent=`
+  .stage-lab{grid-column:1/-1;margin-top:18px;border:1px solid color-mix(in srgb,var(--stage-accent) 35%,rgba(255,255,255,.12));border-radius:24px;background:#09090b;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.22)}
+  .lab-head{display:flex;justify-content:space-between;gap:20px;padding:20px 22px;border-bottom:1px solid rgba(255,255,255,.1)}.lab-head h3{margin:4px 0;font-size:1.45rem}.lab-head p{margin:4px 0 0;color:var(--muted);line-height:1.55}.lab-tag{color:var(--stage-accent);font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.lab-badge{align-self:flex-start;color:var(--stage-accent);border:1px solid color-mix(in srgb,var(--stage-accent) 40%,transparent);border-radius:999px;padding:6px 9px;font-size:.64rem;font-weight:800}
+  .lab-grid{display:grid;grid-template-columns:.9fr 1.1fr}.lab-pane{padding:20px 22px;min-width:0}.lab-pane+ .lab-pane{border-left:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.012)}.lab-label{display:block;margin:0 0 8px;color:var(--muted);font-size:.68rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+  .lab-input,.lab-textarea{width:100%;border:1px solid rgba(255,255,255,.14);border-radius:13px;background:#050506;color:var(--text);font:inherit;padding:11px 12px;outline:none}.lab-textarea{min-height:96px;resize:vertical}.lab-input:focus,.lab-textarea:focus{border-color:var(--stage-accent)}.lab-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.lab-btn{border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.04);color:var(--text);padding:9px 13px;font:inherit;font-size:.76rem;font-weight:800;cursor:pointer}.lab-btn.primary{background:var(--stage-accent);border-color:var(--stage-accent);color:#050505}.lab-btn:disabled{opacity:.5}
+  .lab-output{min-height:165px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:#050506;overflow:hidden}.lab-output-head{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:.65rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.lab-output-body{padding:13px;color:rgba(246,246,243,.82);font:12px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere}.lab-ok{color:var(--stage-accent)}.lab-warn{color:#ffc56b}.lab-bad{color:#ff8c8c}.lab-options{display:grid;gap:7px}.lab-check{display:flex;gap:9px;padding:9px;border:1px solid rgba(255,255,255,.1);border-radius:11px;color:var(--muted);font-size:.78rem}.lab-check input{accent-color:var(--stage-accent)}.lab-steps{display:grid;gap:7px}.lab-step{padding:9px 10px;border:1px solid rgba(255,255,255,.09);border-radius:10px;color:var(--muted);font-size:.75rem}.lab-step.on{border-color:var(--stage-accent);color:var(--text)}.lab-step.done{color:var(--stage-accent)}
+  .lab-code{margin:0;padding:13px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:#050506;color:rgba(246,246,243,.82);font:12px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap}.minus{color:#ff8c8c}.plus{color:var(--stage-accent)}
+  @media(max-width:760px){.lab-grid{grid-template-columns:1fr}.lab-pane+.lab-pane{border-left:0;border-top:1px solid rgba(255,255,255,.1)}.lab-head{flex-direction:column}.lab-badge{align-self:flex-start}}
+  `;document.head.appendChild(css);
 
-      if (visible.length) {
-        setActive(Number(visible[0].target.dataset.stage));
-      }
-    },
-    {
-      root: null,
-      rootMargin: "-26% 0px -46% 0px",
-      threshold: [0.1, 0.25, 0.45, 0.65]
-    }
-  );
+  const lab=(id,title,desc,left,right)=>`<section class="stage-lab"><div class="lab-head"><div><div class="lab-tag">Built-in Lab · Try it</div><h3>${title}</h3><p>${desc}</p></div><span class="lab-badge">SIMULATION</span></div><div class="lab-grid"><div class="lab-pane">${left}</div><div class="lab-pane">${right}</div></div></section>`;
+  const output=id=>`<div class="lab-output"><div class="lab-output-head">Learning console</div><div class="lab-output-body" id="${id}">Ready. Try the lab.</div></div>`;
+  const add=(id,html)=>document.getElementById(id)?.insertAdjacentHTML('beforeend',html);
 
-  stages.forEach((stage) => observer.observe(stage));
+  add('chatgpt',lab('prompt','Prompt Lab','See the limitation of a model that can answer, but cannot inspect your environment.',`<label class="lab-label">Ask the model</label><textarea id="promptInput" class="lab-textarea">My website returns 502 Bad Gateway. What should I check?</textarea><div class="lab-actions"><button class="lab-btn primary" data-run="prompt">Ask AI</button><button class="lab-btn" data-vague>Use vague prompt</button></div>`,output('promptOut')));
+  add('context',lab('context','Context / RAG Lab','Add private evidence and watch a generic answer become a grounded diagnosis.',`<span class="lab-label">Available context</span><div class="lab-options"><label class="lab-check"><input type="checkbox" value="nginx">NGINX configuration</label><label class="lab-check"><input type="checkbox" value="runbook">Incident runbook</label><label class="lab-check"><input type="checkbox" value="logs">Recent error logs</label><label class="lab-check"><input type="checkbox" value="arch">Architecture notes</label></div><div class="lab-actions"><button class="lab-btn primary" data-run="context">Diagnose</button><button class="lab-btn" data-all>Select all</button></div>`,output('contextOut')));
+  add('agents',lab('agent','Agent Loop Lab','Watch an agent choose tools, observe results, and decide what to do next.',`<span class="lab-label">Goal: restore website</span><div class="lab-steps" id="agentSteps"><div class="lab-step">1 · Reason about 502</div><div class="lab-step">2 · Check /health</div><div class="lab-step">3 · Observe refusal</div><div class="lab-step">4 · Inspect service</div><div class="lab-step">5 · Reach diagnosis</div></div><div class="lab-actions"><button class="lab-btn primary" data-run="agent">Run Agent</button><button class="lab-btn" data-reset-agent>Reset</button></div>`,output('agentOut')));
+  add('agentic-coding',lab('coding','Agentic Coding Lab','The agent works inside a repository: read, edit, test, inspect the diff, then stop for review.',`<span class="lab-label">Repository · nginx.conf</span><pre class="lab-code" id="codeBox">server {\n  listen 80;\n  location / {\n    proxy_pass http://app:300;\n  }\n}</pre><div class="lab-actions"><button class="lab-btn primary" data-run="code">Fix & Test</button><button class="lab-btn" data-reset-code>Reset</button></div>`,output('codeOut')));
+  add('harness',lab('harness','Harness Engineering Lab','Capability is not enough. Add controls around the agent to make autonomous work reliable.',`<span class="lab-label">Harness controls</span><div class="lab-options" id="harnessOpts"><label class="lab-check"><input type="checkbox" value="context" checked>Context loading</label><label class="lab-check"><input type="checkbox" value="policy" checked>Policy boundaries</label><label class="lab-check"><input type="checkbox" value="tests" checked>Validation tests</label><label class="lab-check"><input type="checkbox" value="rollback" checked>Rollback</label><label class="lab-check"><input type="checkbox" value="trace" checked>Observability</label></div><div class="lab-actions"><button class="lab-btn primary" data-run="harness">Run Task</button><button class="lab-btn" data-risk>Make it risky</button></div>`,output('harnessOut')));
 
-  points.forEach((point) => {
-    point.addEventListener("click", () => {
-      const index = Number(point.dataset.stage);
-      stages[index]?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  document.querySelector('[data-vague]')?.addEventListener('click',()=>{document.getElementById('promptInput').value='My website is down.'});
+  document.querySelector('[data-run="prompt"]')?.addEventListener('click',()=>{const q=document.getElementById('promptInput').value.trim(),o=document.getElementById('promptOut');o.innerHTML=q.length<35?`PROMPT  ${q}\n\nI can suggest common causes: DNS, TLS, web server, application, network, or upstream availability.\n\n<span class="lab-warn">Limitation → I cannot inspect your system, so this is advice, not a diagnosis.</span>`:`PROMPT  ${q}\n\nA 502 usually means the proxy received no valid response from its upstream. Check the upstream service, configured host/port, health endpoint, and proxy error log.\n\n<span class="lab-ok">Better prompt → better answer, but the model still has no private evidence.</span>`});
 
-  setActive(0);
+  const contextChecks=()=>[...document.querySelectorAll('#context .stage-lab input[type=checkbox]')];
+  document.querySelector('[data-all]')?.addEventListener('click',()=>contextChecks().forEach(x=>x.checked=true));
+  document.querySelector('[data-run="context"]')?.addEventListener('click',()=>{const s=contextChecks().filter(x=>x.checked).map(x=>x.value),o=document.getElementById('contextOut');if(!s.length){o.innerHTML=`No context retrieved.\n\nGeneric troubleshooting only.\n\n<span class="lab-warn">Select evidence and run again.</span>`;return}let e=[];if(s.includes('nginx'))e.push('nginx.conf → upstream app:3000');if(s.includes('logs'))e.push('error.log → connect() failed (111) app:3000');if(s.includes('runbook'))e.push('runbook → verify upstream health first');if(s.includes('arch'))e.push('architecture → NGINX → app → API');o.innerHTML=`RETRIEVED\n${e.join('\n')}\n\nDIAGNOSIS\n${s.includes('nginx')&&s.includes('logs')?'NGINX is targeting app:3000 and the connection is being refused. The upstream application is the likely fault domain.':'The selected evidence narrows the incident and determines the next check.'}\n\n<span class="lab-ok">Grounded answer → based on your information.</span>`});
+
+  const agentSteps=[...document.querySelectorAll('#agentSteps .lab-step')];
+  const resetAgent=()=>{agentSteps.forEach(x=>x.className='lab-step');document.getElementById('agentOut').textContent='Ready. Try the lab.'};document.querySelector('[data-reset-agent]')?.addEventListener('click',resetAgent);
+  document.querySelector('[data-run="agent"]')?.addEventListener('click',async e=>{e.currentTarget.disabled=true;resetAgent();const o=document.getElementById('agentOut'),trace=['REASON  502 suggests an upstream failure','ACT     GET app:3000/health','OBSERVE connection refused','ACT     inspect service + logs','RESULT  app listens on :3001; NGINX expects :3000'];o.textContent='';for(let i=0;i<agentSteps.length;i++){agentSteps[i].classList.add('on');await sleep(320);agentSteps[i].classList.remove('on');agentSteps[i].classList.add('done');o.textContent+=trace[i]+'\n'}o.innerHTML+=`\n<span class="lab-ok">The agent continued from observation to action without a new user prompt.</span>`;e.currentTarget.disabled=false});
+
+  const broken=`server {\n  listen 80;\n  location / {\n    proxy_pass http://app:300;\n  }\n}`,fixed=`server {\n  listen 80;\n  location / {\n    proxy_pass http://app:3000;\n  }\n}`;document.querySelector('[data-reset-code]')?.addEventListener('click',()=>{document.getElementById('codeBox').textContent=broken;document.getElementById('codeOut').textContent='Ready. Try the lab.'});
+  document.querySelector('[data-run="code"]')?.addEventListener('click',async e=>{e.currentTarget.disabled=true;const o=document.getElementById('codeOut');o.textContent='READ   nginx.conf\nPLAN   compare proxy port with application service\n';await sleep(300);document.getElementById('codeBox').textContent=fixed;o.textContent+='EDIT   :300 → :3000\n';await sleep(300);o.innerHTML+=`TEST   nginx -t → syntax ok\nTEST   GET /health → 200 OK\n\n<span class="minus">- proxy_pass http://app:300;</span>\n<span class="plus">+ proxy_pass http://app:3000;</span>\n\n<span class="lab-ok">Verified diff ready for human review.</span>`;e.currentTarget.disabled=false});
+
+  const hchecks=()=>[...document.querySelectorAll('#harnessOpts input')];document.querySelector('[data-risk]')?.addEventListener('click',()=>hchecks().forEach((x,i)=>x.checked=i===0));
+  document.querySelector('[data-run="harness"]')?.addEventListener('click',async e=>{e.currentTarget.disabled=true;const s=hchecks().filter(x=>x.checked).map(x=>x.value),o=document.getElementById('harnessOut');o.textContent='GOAL    restore website availability\n';const rows=[['context','CONTEXT repository + architecture loaded','CONTEXT missing → agent guesses'],['policy','POLICY  production edit blocked; stage first','POLICY  direct production edit allowed'],['tests','TEST    syntax + health validation required','TEST    skipped'],['rollback','RECOVER rollback point created','RECOVER no rollback point'],['trace','TRACE   actions and outputs recorded','TRACE   incomplete']];for(const [k,a,b] of rows){o.textContent+=(s.includes(k)?a:b)+'\n';await sleep(170)}o.innerHTML+=s.length===5?`\n<span class="lab-ok">OUTCOME → safe, validated, observable and recoverable.</span>`:s.length>=3?`\n<span class="lab-warn">OUTCOME → partially controlled. Reliability is reduced.</span>`:`\n<span class="lab-bad">OUTCOME → capable agent, weak system. The change cannot be proven safe.</span>`;e.currentTarget.disabled=false});
 })();
