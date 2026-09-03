@@ -1,0 +1,188 @@
+/* Mobile-first refinements for ai.oalfawzan.sa */
+@media (max-width: 680px) {
+  html { scroll-padding-top: 128px; }
+
+  .site-header {
+    padding: 12px 14px;
+    min-height: 56px;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .top-nav { gap: 2px; }
+  .top-nav a { padding: 7px 9px; font-size: .66rem; }
+
+  .timeline-shell {
+    top: 56px;
+    padding: 11px 8px 10px;
+    background: rgba(5,5,5,.94);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .timeline-track { min-height: 52px; }
+  .timeline-track::before,
+  .timeline-progress { top: 20px; }
+  .timeline-point span { font-size: .88rem; }
+  .timeline-point i { width: 13px; height: 13px; }
+  .timeline-point b {
+    margin-top: 5px;
+    font-size: .43rem;
+    line-height: 1.05;
+    max-width: 58px;
+    letter-spacing: .08em;
+  }
+
+  .stage {
+    padding: 52px 16px 76px;
+    gap: 18px;
+  }
+
+  .stage-copy { order: 1; }
+  .stage .stage-lab { order: 2; }
+  .stage .blackboard { order: 3; }
+  .stage .example { order: 4; }
+
+  .stage-copy h2 {
+    font-size: clamp(2.15rem, 10.5vw, 3.2rem);
+    line-height: .98;
+    margin-bottom: 14px;
+  }
+
+  .stage-copy > p {
+    font-size: .94rem;
+    line-height: 1.58;
+  }
+
+  .stage-idea {
+    margin-top: 22px;
+    padding-top: 17px;
+  }
+
+  .stage-idea span { font-size: .62rem; }
+  .stage-idea strong { font-size: 1.22rem; }
+
+  .stage .stage-lab {
+    margin-top: 4px !important;
+    border-radius: 18px !important;
+    box-shadow: 0 18px 48px rgba(0,0,0,.28);
+  }
+
+  .stage .lab-head {
+    padding: 15px 15px 13px !important;
+    gap: 8px !important;
+  }
+
+  .stage .lab-head h3 {
+    font-size: 1.18rem !important;
+    line-height: 1.12;
+  }
+
+  .stage .lab-head p {
+    font-size: .77rem;
+    line-height: 1.45;
+  }
+
+  .stage .lab-tag { font-size: .55rem !important; }
+  .stage .lab-score { font-size: .58rem !important; }
+
+  .stage .lab-grid { grid-template-columns: 1fr !important; }
+  .stage .lab-pane {
+    padding: 14px !important;
+  }
+
+  .stage .lab-pane + .lab-pane {
+    border-left: 0 !important;
+    border-top: 1px solid #222;
+  }
+
+  .stage .lab-textarea {
+    min-height: 78px !important;
+    font-size: .82rem;
+  }
+
+  .stage .lab-select { font-size: .82rem; }
+
+  .stage .lab-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 7px !important;
+  }
+
+  .stage .lab-btn {
+    min-height: 40px;
+    padding: 8px 9px !important;
+    font-size: .7rem !important;
+    white-space: normal;
+    line-height: 1.15;
+  }
+
+  .stage .lab-console {
+    min-height: 150px !important;
+    max-height: 255px;
+    overflow: auto;
+    padding: 11px !important;
+    font-size: 10.5px !important;
+    line-height: 1.55 !important;
+  }
+
+  .stage .checks { gap: 6px !important; }
+  .stage .check {
+    padding: 8px !important;
+    font-size: .72rem !important;
+  }
+
+  .stage .steps { gap: 5px !important; }
+  .stage .step {
+    padding: 7px 8px !important;
+    font-size: .69rem !important;
+  }
+
+  .stage .scenario {
+    grid-template-columns: repeat(3,minmax(0,1fr)) !important;
+    gap: 5px !important;
+  }
+
+  .stage .scenario button {
+    font-size: .66rem;
+    padding: 8px 4px !important;
+  }
+
+  .blackboard {
+    margin: 8px 0 0;
+    padding: 14px 8px 0;
+    border-radius: 18px;
+  }
+
+  .chalk-title {
+    padding-left: 6px;
+    font-size: clamp(1.45rem, 7vw, 2rem);
+    line-height: 1;
+  }
+
+  .board-svg {
+    width: 100%;
+    height: auto;
+    max-height: 330px;
+  }
+
+  .example {
+    padding-top: 22px;
+    margin-top: 2px;
+    gap: 10px;
+  }
+
+  .example-tag { font-size: .58rem; }
+  .example h3 { font-size: 1.38rem; }
+  .example p { font-size: .9rem; line-height: 1.55; }
+  .example-result { font-size: .77rem; }
+}
+
+@media (max-width: 390px) {
+  .top-nav a { padding: 6px 7px; }
+  .timeline-point span { font-size: .8rem; }
+  .timeline-point b { font-size: .39rem; max-width: 52px; }
+  .stage { padding-left: 13px; padding-right: 13px; }
+  .stage .lab-actions { grid-template-columns: 1fr; }
+}
