@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>AI Evolution — From Chat to Autonomous Work</title>
-  <meta name="description" content="An interactive visual journey through the evolution of AI applications: ChatGPT, context engineering, RAG, agents, agentic coding, and harness engineering.">
+  <title>AI Evolution — From Chat to Reliable Autonomy</title>
+  <meta name="description" content="An interactive systems journey from chat and grounding to agents, agentic coding, and the engineered harnesses that make autonomous work reliable.">
   <meta name="author" content="Omar Alfawzan">
   <meta name="theme-color" content="#050505">
   <meta name="robots" content="index,follow">
@@ -12,31 +12,179 @@
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ai.oalfawzan.sa/">
-  <meta property="og:title" content="AI Evolution — From Chat to Autonomous Work">
-  <meta property="og:description" content="A visual journey from ChatGPT to RAG, agents, agentic coding, and harness engineering.">
+  <meta property="og:title" content="AI Evolution — From Chat to Reliable Autonomy">
+  <meta property="og:description" content="Follow one production incident as AI evolves from answering prompts to operating inside an engineered, observable, recoverable runtime.">
   <meta property="og:site_name" content="AI Evolution by Omar Alfawzan">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Evolution — From Chat to Reliable Autonomy">
+  <meta name="twitter:description" content="An interactive visual journey through modern AI systems engineering.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./mobile.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"AI Evolution by Omar Alfawzan","url":"https://ai.oalfawzan.sa/","description":"An interactive visual journey through the evolution of AI applications."}</script>
+  <link rel="stylesheet" href="./enhancements.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"AI Evolution by Omar Alfawzan","url":"https://ai.oalfawzan.sa/","description":"An interactive systems journey from chat to reliable autonomy."}</script>
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
-  <header class="site-header"><a class="brand" href="#top" aria-label="AI Evolution home"><span class="brand-mark">AI.</span><span class="brand-sub">oalfawzan.sa</span></a><nav class="top-nav" aria-label="Primary"><a href="https://oalfawzan.sa">Portfolio</a><a href="https://tools.oalfawzan.sa">Tools</a><a class="active" href="#journey">AI</a></nav></header>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="AI Evolution home"><span class="brand-mark">AI.</span><span class="brand-sub">oalfawzan.sa</span></a>
+    <nav class="top-nav" aria-label="Primary"><a href="https://oalfawzan.sa">Portfolio</a><a href="https://tools.oalfawzan.sa">Tools</a><a class="active" href="#journey">AI</a></nav>
+  </header>
+
   <main id="top">
-    <section class="hero"><div class="hero-grid"><div class="eyebrow">THE APPLICATION LAYER</div><h1>From conversation<br><span>to autonomous work.</span></h1><p class="hero-copy">A visual journey through how AI applications evolved from answering prompts to operating inside engineered environments.</p><div class="hero-actions"><a class="primary-btn" href="#journey">Explore the timeline</a><a class="ghost-btn" href="#chatgpt-lab">Enter the labs</a></div></div><div class="hero-sketch" aria-hidden="true"><svg viewBox="0 0 740 400"><path class="sketch-line draw" d="M45 210 C150 205 250 202 350 205 S555 210 700 196"/><path class="sketch-line draw delay-1" d="M690 183 L714 195 L690 209"/><circle class="node cyan pulse" cx="105" cy="208" r="8"/><circle class="node yellow pulse delay-1" cx="240" cy="203" r="8"/><circle class="node green pulse delay-2" cx="375" cy="206" r="8"/><circle class="node blue pulse delay-3" cx="515" cy="207" r="8"/><circle class="node pink pulse delay-4" cx="650" cy="201" r="8"/><text class="sketch-year" x="80" y="175">2022</text><text class="sketch-year" x="215" y="170">2023</text><text class="sketch-year" x="350" y="173">2024</text><text class="sketch-year" x="490" y="174">2025</text><text class="sketch-year" x="625" y="168">2026</text><text class="sketch-label cyan-fill" x="82" y="320">Chat</text><text class="sketch-label yellow-fill" x="182" y="334">Context</text><text class="sketch-label green-fill" x="367" y="338">Agents</text><text class="sketch-label blue-fill" x="442" y="338">Coding</text><text class="sketch-label pink-fill" x="590" y="340">Harness</text></svg></div></section>
-    <section class="journey" id="journey"><div class="timeline-shell"><div class="timeline-track"><div class="timeline-progress" id="timelineProgress"></div><button class="timeline-point is-active" data-stage="0"><span>2022</span><i></i><b>ChatGPT</b></button><button class="timeline-point" data-stage="1"><span>2023</span><i></i><b>Context</b></button><button class="timeline-point" data-stage="2"><span>2024</span><i></i><b>Agents</b></button><button class="timeline-point" data-stage="3"><span>2025</span><i></i><b>Agentic Coding</b></button><button class="timeline-point" data-stage="4"><span>2026</span><i></i><b>Harness</b></button></div></div>
-      <article class="stage" id="chatgpt" data-stage="0" data-accent="cyan"><div class="stage-copy"><div class="stage-kicker">01 / 2022 · THE CHAT WAVE</div><h2>ChatGPT made the <em>prompt</em> the interface.</h2><p>Ask in natural language and receive useful text, code, reasoning, or explanation back.</p><div class="stage-idea"><span>Capability</span><strong>AI could answer.</strong></div></div><div class="blackboard"><div class="chalk-title cyan-text">Prompt → Model → Response</div><svg class="board-svg" viewBox="0 0 760 410"><rect class="chalk-box cyan-stroke" x="55" y="125" width="180" height="120" rx="22"/><rect class="chalk-box" x="290" y="125" width="180" height="120" rx="22"/><rect class="chalk-box" x="525" y="125" width="180" height="120" rx="22"/><text class="chalk-text" x="111" y="195">Prompt</text><text class="chalk-text" x="342" y="195">LLM</text><text class="chalk-text" x="565" y="195">Answer</text></svg></div><aside class="example"><span class="example-tag">ONE EXAMPLE · STAGE 1</span><h3>“My website is down.”</h3><p>You paste the error. The model explains likely causes and troubleshooting steps.</p><div class="example-result">Result → <strong>Advice</strong></div></aside></article>
-      <article class="stage" id="context" data-stage="1" data-accent="yellow"><div class="stage-copy"><div class="stage-kicker">02 / 2023 · CONTEXT BECOMES THE PRODUCT</div><h2>Better answers required <em>better context.</em></h2><p>Applications surround the model with instructions, retrieved knowledge, tools, memory, and structured context.</p><div class="stage-idea"><span>Capability</span><strong>AI could answer using your information.</strong></div></div><div class="blackboard"><div class="chalk-title yellow-text">Context Engineering</div><svg class="board-svg" viewBox="0 0 760 410"><rect class="chalk-box yellow-stroke" x="270" y="150" width="220" height="105" rx="22"/><text class="chalk-text" x="323" y="215">Context</text><text class="chalk-note" x="80" y="210">RAG</text><text class="chalk-note" x="590" y="210">Tools</text></svg></div><aside class="example"><span class="example-tag">ONE EXAMPLE · STAGE 2</span><h3>“My website is down.”</h3><p>The system retrieves your configuration, runbook, logs, and architecture before answering.</p><div class="example-result">Result → <strong>Grounded diagnosis</strong></div></aside></article>
-      <article class="stage" id="agents" data-stage="2" data-accent="green"><div class="stage-copy"><div class="stage-kicker">03 / 2024 · AI GETS A LOOP</div><h2>An agent <em>acts, observes, and continues.</em></h2><p>The model selects tools, inspects results, revises a plan, and repeats until it reaches a goal.</p><div class="stage-idea"><span>Capability</span><strong>AI could take action.</strong></div></div><div class="blackboard"><div class="chalk-title green-text">Reason → Act → Observe → Repeat</div><svg class="board-svg" viewBox="0 0 760 410"><circle class="chalk-circle green-stroke" cx="380" cy="205" r="90"/><text class="chalk-text" x="325" y="218">Agent</text><text class="chalk-note" x="80" y="120">Search</text><text class="chalk-note" x="590" y="120">API</text><text class="chalk-note" x="80" y="330">Files</text><text class="chalk-note" x="565" y="330">Terminal</text></svg></div><aside class="example"><span class="example-tag">ONE EXAMPLE · STAGE 3</span><h3>“My website is down.”</h3><p>The agent checks health, logs, commands, and narrows the incident.</p><div class="example-result">Result → <strong>Investigation</strong></div></aside></article>
-      <article class="stage" id="agentic-coding" data-stage="3" data-accent="blue"><div class="stage-copy"><div class="stage-kicker">04 / 2025 · AI ENTERS THE CODEBASE</div><h2>The repository becomes a <em>working environment.</em></h2><p>Coding agents read code, use terminals, edit files, run tests, inspect diffs, and iterate.</p><div class="stage-idea"><span>Capability</span><strong>AI could change and verify software.</strong></div></div><div class="blackboard"><div class="chalk-title blue-text">Read → Edit → Test → Review</div><svg class="board-svg" viewBox="0 0 760 410"><rect class="chalk-box blue-stroke" x="65" y="145" width="145" height="100" rx="20"/><rect class="chalk-box" x="230" y="145" width="145" height="100" rx="20"/><rect class="chalk-box" x="395" y="145" width="145" height="100" rx="20"/><rect class="chalk-box" x="560" y="145" width="145" height="100" rx="20"/><text class="chalk-note" x="105" y="205">Read</text><text class="chalk-note" x="270" y="205">Edit</text><text class="chalk-note" x="435" y="205">Test</text><text class="chalk-note" x="590" y="205">Diff</text></svg></div><aside class="example"><span class="example-tag">ONE EXAMPLE · STAGE 4</span><h3>“My website is down.”</h3><p>The coding agent traces the issue, changes configuration, validates it, and presents the diff.</p><div class="example-result">Result → <strong>Verified change</strong></div></aside></article>
-      <article class="stage" id="harness" data-stage="4" data-accent="pink"><div class="stage-copy"><div class="stage-kicker">05 / 2026 · ENGINEERING AROUND THE AGENT</div><h2>Autonomy needs an <em>engineered harness.</em></h2><p>Context, policies, validation, recovery, observability, and human boundaries make autonomous work dependable.</p><div class="stage-idea"><span>Capability</span><strong>AI could work reliably inside a system.</strong></div></div><div class="blackboard harness-board"><div class="chalk-title pink-text">Agent + Controls = Harness</div><svg class="board-svg" viewBox="0 0 760 410"><rect class="harness-outer pink-stroke" x="95" y="70" width="570" height="270" rx="35"/><circle class="chalk-circle" cx="380" cy="205" r="75"/><text class="chalk-text" x="326" y="218">Agent</text><text class="chalk-note" x="125" y="125">Policy</text><text class="chalk-note" x="520" y="125">Context</text><text class="chalk-note" x="125" y="305">Recovery</text><text class="chalk-note" x="505" y="305">Tests</text></svg></div><aside class="example"><span class="example-tag">ONE EXAMPLE · STAGE 5</span><h3>“Keep my website healthy.”</h3><p>The harness gives the agent context, boundaries, validation, recovery, and traces.</p><div class="example-result">Result → <strong>Reliable autonomy</strong></div></aside></article>
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="eyebrow">AI SYSTEMS EVOLUTION</div>
+        <h1>From conversation<br><span>to reliable autonomy.</span></h1>
+        <p class="hero-copy">Follow one production incident as the system evolves: first the model answers, then it gets grounded, acts through tools, changes software, and finally operates inside an engineered runtime.</p>
+        <div class="hero-actions"><a class="primary-btn" href="#journey">Explore the evolution</a><a class="ghost-btn" href="#labs">Enter the labs</a></div>
+        <p class="hero-thesis">The model is the brain. The system around it determines what the brain can reliably do.</p>
+      </div>
+      <div class="hero-sketch" aria-hidden="true">
+        <svg viewBox="0 0 740 400">
+          <path class="sketch-line draw" d="M45 210 C150 205 250 202 350 205 S555 210 700 196"/>
+          <path class="sketch-line draw delay-1" d="M690 183 L714 195 L690 209"/>
+          <circle class="node cyan pulse" cx="105" cy="208" r="8"/><circle class="node yellow pulse delay-1" cx="240" cy="203" r="8"/><circle class="node green pulse delay-2" cx="375" cy="206" r="8"/><circle class="node blue pulse delay-3" cx="515" cy="207" r="8"/><circle class="node pink pulse delay-4" cx="650" cy="201" r="8"/>
+          <text class="sketch-year" x="80" y="175">2022</text><text class="sketch-year" x="215" y="170">2023</text><text class="sketch-year" x="350" y="173">2024</text><text class="sketch-year" x="490" y="174">2025</text><text class="sketch-year" x="625" y="168">2026</text>
+          <text class="sketch-label cyan-fill" x="82" y="320">Chat</text><text class="sketch-label yellow-fill" x="175" y="334">Ground</text><text class="sketch-label green-fill" x="367" y="338">Agent</text><text class="sketch-label blue-fill" x="452" y="338">Code</text><text class="sketch-label pink-fill" x="590" y="340">Harness</text>
+        </svg>
+      </div>
     </section>
-    <section class="comparison"><div class="section-label">THE EVOLUTION IN ONE VIEW</div><h2>Same model idea. Increasing system capability.</h2><div class="stack-list"><div class="stack-row" data-tone="cyan"><span>01</span><b>Chat</b><p>Prompt → response</p><strong>Answer</strong></div><div class="stack-row" data-tone="yellow"><span>02</span><b>Context</b><p>Private knowledge + model</p><strong>Ground</strong></div><div class="stack-row" data-tone="green"><span>03</span><b>Agent</b><p>Reason + tools + loop</p><strong>Act</strong></div><div class="stack-row" data-tone="blue"><span>04</span><b>Agentic Coding</b><p>Repository + terminal + tests</p><strong>Build</strong></div><div class="stack-row" data-tone="pink"><span>05</span><b>Harness</b><p>Agent + controls + recovery</p><strong>Operate</strong></div></div></section>
-    <section class="key-idea" id="key-idea"><div class="key-grid"><div class="key-copy"><div class="section-label">THE KEY IDEA</div><h2>The model is only one layer.</h2><p>The biggest jump comes from what we engineer around the model: context, tools, loops, tests, policies, recovery, and observability.</p></div><div class="ladder"><div><b>LLM</b><span>brain</span></div><i>+</i><div><b>Context</b><span>knowledge</span></div><i>+</i><div><b>Tools</b><span>action</span></div><i>+</i><div><b>Loop</b><span>agency</span></div><i>+</i><div class="final-rung"><b>Harness</b><span>reliability</span></div></div></div></section>
+
+    <section class="journey" id="journey">
+      <div class="timeline-shell">
+        <div class="mobile-stage-readout" aria-live="polite"><span id="mobileStageCount">01 / 05</span><strong id="mobileStageName">CHAT</strong></div>
+        <div class="timeline-track">
+          <div class="timeline-progress" id="timelineProgress"></div>
+          <button class="timeline-point is-active" data-stage="0"><span>2022</span><i></i><b>Chat</b></button>
+          <button class="timeline-point" data-stage="1"><span>2023</span><i></i><b>Grounding</b></button>
+          <button class="timeline-point" data-stage="2"><span>2024</span><i></i><b>Agent</b></button>
+          <button class="timeline-point" data-stage="3"><span>2025</span><i></i><b>Agentic Coding</b></button>
+          <button class="timeline-point" data-stage="4"><span>2026</span><i></i><b>Harness</b></button>
+        </div>
+        <p class="timeline-note">Years mark major product/application waves, not the invention date of each technique.</p>
+      </div>
+
+      <article class="stage" id="chatgpt" data-stage="0" data-accent="cyan">
+        <div class="stage-copy"><div class="stage-kicker">01 / 2022 · THE CHAT WAVE</div><h2>Chat made the <em>prompt</em> the interface.</h2><p>Ask in natural language and receive useful text, code, reasoning, or explanation back. The model can only work with what you place in the conversation.</p><div class="stage-idea"><span>Capability</span><strong>AI could answer.</strong></div></div>
+        <div class="blackboard"><div class="chalk-title cyan-text">Prompt → Model → Response</div><svg class="board-svg" viewBox="0 0 760 410"><rect class="chalk-box cyan-stroke" x="55" y="125" width="180" height="120" rx="22"/><rect class="chalk-box" x="290" y="125" width="180" height="120" rx="22"/><rect class="chalk-box" x="525" y="125" width="180" height="120" rx="22"/><text class="chalk-text" x="111" y="195">Prompt</text><text class="chalk-text" x="342" y="195">LLM</text><text class="chalk-text" x="565" y="195">Answer</text></svg></div>
+        <aside class="example"><span class="example-tag">ONE INCIDENT · STAGE 1</span><h3>“My website is down.”</h3><p>You paste the error. The model explains likely causes and troubleshooting steps.</p><div class="example-result">Result → <strong>Advice</strong></div></aside>
+      </article>
+
+      <article class="stage" id="context" data-stage="1" data-accent="yellow">
+        <div class="stage-copy"><div class="stage-kicker">02 / 2023 · GROUNDING BECOMES THE PRODUCT</div><h2>Better answers needed the <em>right evidence.</em></h2><p>Retrieval, memory, state and context selection determine what the model sees now. More context is not automatically better context.</p><div class="stage-idea"><span>Capability</span><strong>AI could answer from grounded evidence.</strong></div></div>
+        <div class="blackboard"><div class="chalk-title yellow-text">Available information → Curated context → Model</div><svg class="board-svg" viewBox="0 0 760 410"><rect class="chalk-box yellow-stroke" x="270" y="150" width="220" height="105" rx="22"/><text class="chalk-text" x="305" y="215">Context</text><text class="chalk-note" x="70" y="120">Logs</text><text class="chalk-note" x="575" y="120">Memory</text><text class="chalk-note" x="70" y="320">RAG</text><text class="chalk-note" x="565" y="320">State</text></svg></div>
+        <aside class="example"><span class="example-tag">ONE INCIDENT · STAGE 2</span><h3>“My website is down.”</h3><p>The system retrieves configuration, deployment state, health results and only the log evidence relevant to this incident.</p><div class="example-result">Result → <strong>Grounded diagnosis</strong></div></aside>
+      </article>
+
+      <section class="research-bridge" id="workflow-agent">
+        <div class="section-label">A CRITICAL DISTINCTION</div>
+        <div class="bridge-head"><div><h2>Workflow or agent?</h2><p>A workflow follows a path defined in code. An agent chooses the path dynamically from observations.</p></div><div class="pattern-toggle" role="group" aria-label="Compare workflow and agent"><button class="is-on" data-pattern="workflow">Workflow</button><button data-pattern="agent">Agent</button></div></div>
+        <div class="pattern-stage" id="patternStage" aria-live="polite"></div>
+      </section>
+
+      <article class="stage" id="agents" data-stage="2" data-accent="green">
+        <div class="stage-copy"><div class="stage-kicker">03 / 2024 · AI GETS A CONTROL LOOP</div><h2>An agent <em>acts, observes, and decides what comes next.</em></h2><p>The model selects tools, inspects results, revises its plan and continues until the goal is complete, a boundary is reached, or control returns to a human.</p><div class="stage-idea"><span>Capability</span><strong>AI could decide and act.</strong></div></div>
+        <div class="blackboard"><div class="chalk-title green-text">Reason → Act → Observe → Continue or Stop</div><svg class="board-svg" viewBox="0 0 760 410"><circle class="chalk-circle green-stroke" cx="380" cy="205" r="90"/><text class="chalk-text" x="325" y="218">Agent</text><text class="chalk-note" x="80" y="120">Search</text><text class="chalk-note" x="590" y="120">API</text><text class="chalk-note" x="80" y="330">Files</text><text class="chalk-note" x="565" y="330">Terminal</text></svg></div>
+        <aside class="example"><span class="example-tag">ONE INCIDENT · STAGE 3</span><h3>“My website is down.”</h3><p>The agent probes health, reads logs, compares deployment state, forms a new hypothesis and either remediates or stops at its permission boundary.</p><div class="example-result">Result → <strong>Investigation + action</strong></div></aside>
+      </article>
+
+      <article class="stage" id="agentic-coding" data-stage="3" data-accent="blue">
+        <div class="stage-copy"><div class="stage-kicker">04 / 2025 · AI ENTERS THE SOFTWARE ENVIRONMENT</div><h2>The repository becomes a <em>working environment.</em></h2><p>Coding agents read code, use terminals, edit files, run tests, inspect diffs and iterate. The runtime and tools become part of the problem-solving system.</p><div class="stage-idea"><span>Capability</span><strong>AI could change and verify software.</strong></div></div>
+        <div class="blackboard"><div class="chalk-title blue-text">Read → Hypothesize → Edit → Test → Review</div><svg class="board-svg" viewBox="0 0 760 410"><rect class="chalk-box blue-stroke" x="65" y="145" width="145" height="100" rx="20"/><rect class="chalk-box" x="230" y="145" width="145" height="100" rx="20"/><rect class="chalk-box" x="395" y="145" width="145" height="100" rx="20"/><rect class="chalk-box" x="560" y="145" width="145" height="100" rx="20"/><text class="chalk-note" x="105" y="205">Read</text><text class="chalk-note" x="270" y="205">Edit</text><text class="chalk-note" x="435" y="205">Test</text><text class="chalk-note" x="590" y="205">Diff</text></svg></div>
+        <aside class="example"><span class="example-tag">ONE INCIDENT · STAGE 4</span><h3>“My website is down.”</h3><p>The coding agent traces the regression, edits the proxy configuration, runs validation and presents a reviewable diff.</p><div class="example-result">Result → <strong>Verified change</strong></div></aside>
+      </article>
+
+      <article class="stage" id="harness" data-stage="4" data-accent="pink">
+        <div class="stage-copy"><div class="stage-kicker">05 / 2026 · ENGINEERING THE RUNTIME</div><h2>Reliable autonomy needs an <em>engineered harness.</em></h2><p>Context management, state, sandboxing, permissions, validation, durable execution, recovery, evals and observability constrain risk while allowing useful autonomy.</p><div class="stage-idea"><span>Capability</span><strong>AI could operate reliably inside a system.</strong></div></div>
+        <div class="blackboard harness-board"><div class="chalk-title pink-text">Harness surrounds the agent runtime</div><svg class="board-svg" viewBox="0 0 760 410"><rect class="harness-outer pink-stroke" x="70" y="55" width="620" height="300" rx="35"/><circle class="chalk-circle" cx="380" cy="205" r="72"/><text class="chalk-text" x="326" y="218">Agent</text><text class="chalk-note" x="105" y="115">Policy</text><text class="chalk-note" x="525" y="115">Context</text><text class="chalk-note" x="95" y="320">Recovery</text><text class="chalk-note" x="510" y="320">Evals</text><text class="chalk-note" x="300" y="92">Sandbox</text><text class="chalk-note" x="285" y="345">Trace</text></svg></div>
+        <aside class="example"><span class="example-tag">ONE INCIDENT · STAGE 5</span><h3>“Keep my website healthy.”</h3><p>The harness gives the agent a controlled workspace, explicit boundaries, checkpoints, validation, recovery paths and traces across the whole run.</p><div class="example-result">Result → <strong>Reliable autonomy</strong></div></aside>
+      </article>
+    </section>
+
+    <section class="capability-section" id="capabilities">
+      <div class="section-label">WHAT ACTUALLY CHANGED?</div>
+      <div class="section-intro"><h2>Capability accumulates. Complexity should earn its place.</h2><p>The goal is not to build the most sophisticated architecture. Add a layer only when a simpler system cannot meet the task reliably.</p></div>
+      <div class="capability-grid" role="table" aria-label="Capability progression across AI system stages">
+        <div class="cap-row cap-head" role="row"><span>Capability</span><b>Chat</b><b>Ground</b><b>Agent</b><b>Coding</b><b>Harness</b></div>
+        <div class="cap-row"><span>Grounded evidence</span><i>○</i><i class="on">●</i><i class="on">●</i><i class="on">●</i><i class="on">●</i></div>
+        <div class="cap-row"><span>Tool use & actions</span><i>○</i><i>○</i><i class="on">●</i><i class="on">●</i><i class="on">●</i></div>
+        <div class="cap-row"><span>Software modification</span><i>○</i><i>○</i><i>○</i><i class="on">●</i><i class="on">●</i></div>
+        <div class="cap-row"><span>Verification</span><i>○</i><i>○</i><i>◐</i><i class="on">●</i><i class="on">●</i></div>
+        <div class="cap-row"><span>Durable recovery</span><i>○</i><i>○</i><i>○</i><i>○</i><i class="on">●</i></div>
+        <div class="cap-row"><span>Containment & policy</span><i>○</i><i>○</i><i>◐</i><i>◐</i><i class="on">●</i></div>
+        <div class="cap-row"><span>Tracing & evals</span><i>○</i><i>◐</i><i>◐</i><i>◐</i><i class="on">●</i></div>
+      </div>
+    </section>
+
+    <section class="labs-hub" id="labs">
+      <div class="section-label">LEARN BY DOING</div>
+      <div class="section-intro"><h2>Five labs. One incident.</h2><p>Use the same 502 incident to feel why each architecture layer exists. Start anywhere, but the sequence is designed to build one mental model.</p></div>
+      <div class="lab-card-grid">
+        <a class="lab-card cyan-card" href="#chatgpt-lab"><span>01</span><strong>Prompt Workbench</strong><p>See how specificity changes the answer.</p><b>Open lab →</b></a>
+        <a class="lab-card yellow-card" href="#context-lab"><span>02</span><strong>Context Budget</strong><p>Balance relevance, tokens and noise.</p><b>Open lab →</b></a>
+        <a class="lab-card green-card" href="#agents-lab"><span>03</span><strong>Agent Boundaries</strong><p>Change permissions and exit conditions.</p><b>Open lab →</b></a>
+        <a class="lab-card blue-card" href="#agentic-coding-lab"><span>04</span><strong>Coding Runtime</strong><p>Inspect, patch, test and review.</p><b>Open lab →</b></a>
+        <a class="lab-card pink-card" href="#harness-lab"><span>05</span><strong>Reliability Harness</strong><p>Inject failures and recover safely.</p><b>Open lab →</b></a>
+      </div>
+    </section>
+
+    <section class="same-model" id="same-model">
+      <div class="section-label">THE SAME MODEL CHALLENGE</div>
+      <div class="same-model-head"><div><h2>Same model. Different system.</h2><p>Run the same incident through a naive loop and an engineered runtime.</p></div><button class="primary-btn" id="runSystems" type="button">Run both systems</button></div>
+      <div class="system-compare">
+        <article class="system-card naive"><span>NAIVE</span><h3>Model + tools + while loop</h3><div class="system-console" id="naiveConsole">READY</div></article>
+        <article class="system-card engineered"><span>ENGINEERED</span><h3>Context + sandbox + tests + recovery + trace</h3><div class="system-console" id="engineeredConsole">READY</div></article>
+      </div>
+      <div class="same-model-reveal" id="systemReveal" aria-live="polite"></div>
+    </section>
+
+    <section class="comparison">
+      <div class="section-label">THE EVOLUTION IN ONE VIEW</div>
+      <h2>Same model idea. Increasing system capability.</h2>
+      <div class="stack-list">
+        <div class="stack-row" data-tone="cyan"><span>01</span><b>Chat</b><p>Prompt → response</p><strong>Answer</strong></div>
+        <div class="stack-row" data-tone="yellow"><span>02</span><b>Grounding</b><p>Curated evidence + model</p><strong>Know</strong></div>
+        <div class="stack-row" data-tone="green"><span>03</span><b>Agent</b><p>Reason + tools + loop + stop</p><strong>Act</strong></div>
+        <div class="stack-row" data-tone="blue"><span>04</span><b>Agentic Coding</b><p>Repository + terminal + tests</p><strong>Build</strong></div>
+        <div class="stack-row" data-tone="pink"><span>05</span><b>Harness & Runtime</b><p>Agent + controls + state + recovery</p><strong>Operate</strong></div>
+      </div>
+    </section>
+
+    <section class="key-idea" id="key-idea">
+      <div class="key-grid">
+        <div class="key-copy"><div class="section-label">THE KEY IDEA</div><h2>The model is only the brain.</h2><p>The frontier is not only better models. It is better systems for models to work inside: the right context, useful tools, a good environment, explicit boundaries, validation, recovery and observability.</p></div>
+        <div class="ladder"><div><b>Model</b><span>reasoning</span></div><i>×</i><div><b>Context</b><span>evidence</span></div><i>×</i><div><b>Tools</b><span>action</span></div><i>×</i><div><b>Environment</b><span>execution</span></div><i>×</i><div><b>Validation</b><span>quality</span></div><i>×</i><div class="final-rung"><b>Harness</b><span>reliability</span></div></div>
+      </div>
+    </section>
+
+    <section class="interop-section" id="interop">
+      <div class="section-label">OPTIONAL EXPLORATION · INTEROPERABILITY</div>
+      <div class="section-intro"><h2>Connect tools with MCP. Connect agents with A2A.</h2><p>These are interoperability layers, not a mandatory “next stage.” A single well-designed agent is often the better architecture until the problem truly requires more.</p></div>
+      <div class="interop-diagram">
+        <div class="interop-node"><small>TOOLS & DATA</small><strong>GitHub · DB · Files</strong></div><div class="interop-link"><b>MCP</b><span>agent ↔ tools</span></div><div class="interop-node agent-node"><small>AGENT A</small><strong>Single agent first</strong></div><div class="interop-link"><b>A2A</b><span>agent ↔ agent</span></div><div class="interop-node"><small>AGENT B</small><strong>Only when needed</strong></div>
+      </div>
+    </section>
+
+    <section class="sources-section" id="sources">
+      <div><div class="section-label">FURTHER READING</div><h2>Built from current production-agent guidance.</h2><p>The timeline is intentionally simplified for learning. These primary sources go deeper into agents, context, runtime design, durability, containment and interoperability.</p></div>
+      <div class="source-grid">
+        <a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/" target="_blank" rel="noopener"><b>OpenAI</b><span>A practical guide to building agents</span></a>
+        <a href="https://openai.com/index/the-next-evolution-of-the-agents-sdk/" target="_blank" rel="noopener"><b>OpenAI</b><span>Model-native harness & sandbox execution</span></a>
+        <a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener"><b>Anthropic</b><span>Building effective agents</span></a>
+        <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener"><b>Anthropic</b><span>Context engineering for agents</span></a>
+        <a href="https://www.anthropic.com/engineering/how-we-contain-claude" target="_blank" rel="noopener"><b>Anthropic</b><span>Containment and blast radius</span></a>
+        <a href="https://cloud.google.com/blog/products/ai-machine-learning/agent-executor-googles-distributed-agent-runtime" target="_blank" rel="noopener"><b>Google Cloud</b><span>Durable agent execution</span></a>
+        <a href="https://modelcontextprotocol.io/specification/2025-06-18/server/resources" target="_blank" rel="noopener"><b>MCP</b><span>Resources and context interoperability</span></a>
+        <a href="https://a2a-protocol.org/latest/" target="_blank" rel="noopener"><b>A2A</b><span>Agent-to-agent interoperability</span></a>
+      </div>
+    </section>
   </main>
-  <footer><div><strong>AI Evolution</strong><p>A visual explainer by Omar Alfawzan.</p></div><div class="footer-links"><a href="https://oalfawzan.sa">Portfolio</a><a href="https://tools.oalfawzan.sa">Tools</a></div></footer>
+
+  <footer><div><strong>AI Evolution</strong><p>An interactive systems explainer by Omar Alfawzan.</p></div><div class="footer-links"><a href="#sources">Sources</a><a href="https://oalfawzan.sa">Portfolio</a><a href="https://tools.oalfawzan.sa">Tools</a></div></footer>
   <script src="./script.js"></script>
-</body></html>
+  <script src="./enhancements.js"></script>
+</body>
+</html>
