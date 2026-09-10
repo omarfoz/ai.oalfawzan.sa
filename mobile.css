@@ -1,9 +1,8 @@
 /* Mobile-first refinements for ai.oalfawzan.sa */
 @media (max-width: 680px) {
-  /* Only the compact timeline stays sticky on phones. The global header
-     scrolls away so it cannot stack above the timeline and cover content. */
-  html { scroll-padding-top: 72px !important; }
+  html { scroll-padding-top: 76px !important; }
 
+  /* Let the global header scroll away; only the stage navigator stays sticky. */
   .site-header {
     position: absolute !important;
     top: 0;
@@ -16,20 +15,19 @@
   .top-nav { gap: 2px; }
   .top-nav a { padding: 7px 9px; font-size: .66rem; }
 
-  /* Compact single-row sticky stage navigator. Higher specificity and
-     !important are intentional because enhancements.css loads after this file. */
+  /* Reference-style compact mobile navigator. */
   body .journey .timeline-shell {
     top: 0 !important;
-    min-height: 58px;
-    padding: 7px 12px !important;
+    min-height: 64px;
+    padding: 8px 18px !important;
     display: grid !important;
-    grid-template-columns: minmax(94px, auto) minmax(0, 1fr);
+    grid-template-columns: 108px minmax(0,1fr);
     align-items: center;
-    gap: 12px;
-    background: rgba(5,5,5,.97);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    gap: 18px;
+    background: rgba(5,5,5,.975);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,.09);
   }
 
   body .journey .mobile-stage-readout {
@@ -37,20 +35,20 @@
     flex-direction: column;
     align-items: flex-start !important;
     justify-content: center !important;
-    gap: 2px !important;
+    gap: 3px !important;
     padding: 0 !important;
     min-width: 0;
-    color: var(--muted);
-    font-size: .61rem;
+    color: rgba(246,246,243,.55);
+    font-size: .64rem;
     line-height: 1.05;
     letter-spacing: .08em;
   }
 
   body .journey .mobile-stage-readout strong {
     color: var(--text);
-    font-size: .70rem;
+    font-size: .78rem;
     line-height: 1.05;
-    max-width: 92px;
+    max-width: 104px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -63,15 +61,15 @@
 
   body .journey .timeline-track::before {
     top: 50% !important;
-    left: 7% !important;
-    right: 7% !important;
+    left: 8% !important;
+    right: 8% !important;
     transform: translateY(-50%);
   }
 
   body .journey .timeline-progress {
     top: 50% !important;
-    left: 7% !important;
-    max-width: 86% !important;
+    left: 8% !important;
+    max-width: 84% !important;
     transform: translateY(-50%);
   }
 
@@ -89,7 +87,13 @@
     height: 13px !important;
   }
 
-  /* Every in-page destination clears the sticky timeline when navigated to. */
+  body .journey .timeline-point.is-active i,
+  body .journey .timeline-point[aria-current="step"] i {
+    width: 19px !important;
+    height: 19px !important;
+  }
+
+  /* Every destination clears the sticky navigator. */
   .stage,
   .research-bridge,
   .capability-section,
@@ -97,162 +101,96 @@
   .same-model,
   .interop-section,
   .sources-section {
-    scroll-margin-top: 72px !important;
+    scroll-margin-top: 76px !important;
   }
 
   .stage {
-    padding: 52px 16px 76px;
-    gap: 18px;
+    padding: 88px 16px 82px !important;
+    gap: 22px;
   }
 
-  /* Mobile learning order: concept → visual → example → lab. */
+  /* Concept → visual → example → lab. */
   .stage-copy { order: 1 !important; }
   .stage .blackboard { order: 2 !important; }
   .stage .example { order: 3 !important; }
   .stage .stage-lab { order: 4 !important; }
 
   .stage-copy h2 {
-    font-size: clamp(2.15rem, 10.5vw, 3.2rem);
+    font-size: clamp(2.15rem,10.5vw,3.2rem);
     line-height: .98;
     margin-bottom: 14px;
   }
 
-  .stage-copy > p {
-    font-size: .94rem;
-    line-height: 1.58;
-  }
+  .stage-copy > p { font-size: .94rem; line-height: 1.58; }
 
-  .stage-idea {
-    margin-top: 22px;
-    padding-top: 17px;
-  }
-
+  .stage-idea { margin-top: 22px; padding-top: 17px; }
   .stage-idea span { font-size: .62rem; }
-  .stage-idea strong { font-size: 1.22rem; }
-
-  .stage .stage-lab {
-    margin-top: 4px !important;
-    border-radius: 18px !important;
-    box-shadow: 0 18px 48px rgba(0,0,0,.28);
-  }
-
-  .stage .lab-head {
-    padding: 15px 15px 13px !important;
-    gap: 8px !important;
-  }
-
-  .stage .lab-head h3 {
-    font-size: 1.18rem !important;
-    line-height: 1.12;
-  }
-
-  .stage .lab-head p {
-    font-size: .77rem;
-    line-height: 1.45;
-  }
-
-  .stage .lab-tag { font-size: .55rem !important; }
-  .stage .lab-score { font-size: .58rem !important; }
-
-  .stage .lab-grid { grid-template-columns: 1fr !important; }
-  .stage .lab-pane { padding: 14px !important; }
-
-  .stage .lab-pane + .lab-pane {
-    border-left: 0 !important;
-    border-top: 1px solid #222;
-  }
-
-  .stage .lab-textarea {
-    min-height: 78px !important;
-    font-size: .82rem;
-  }
-
-  .stage .lab-select { font-size: .82rem; }
-
-  .stage .lab-actions {
-    display: grid !important;
-    grid-template-columns: repeat(2,minmax(0,1fr));
-    gap: 7px !important;
-  }
-
-  .stage .lab-btn {
-    min-height: 40px;
-    padding: 8px 9px !important;
-    font-size: .7rem !important;
-    white-space: normal;
-    line-height: 1.15;
-  }
-
-  .stage .lab-console {
-    min-height: 150px !important;
-    max-height: 255px;
-    overflow: auto;
-    padding: 11px !important;
-    font-size: 10.5px !important;
-    line-height: 1.55 !important;
-  }
-
-  .stage .checks { gap: 6px !important; }
-  .stage .check {
-    padding: 8px !important;
-    font-size: .72rem !important;
-  }
-
-  .stage .steps { gap: 5px !important; }
-  .stage .step {
-    padding: 7px 8px !important;
-    font-size: .69rem !important;
-  }
-
-  .stage .scenario {
-    grid-template-columns: repeat(3,minmax(0,1fr)) !important;
-    gap: 5px !important;
-  }
-
-  .stage .scenario button {
-    font-size: .66rem;
-    padding: 8px 4px !important;
-  }
+  .stage-idea strong { font-size: 1.28rem; }
 
   .blackboard {
     margin: 8px 0 0;
-    padding: 14px 8px 0;
+    padding: 16px 8px 2px;
     border-radius: 18px;
   }
 
   .chalk-title {
-    padding-left: 6px;
-    font-size: clamp(1.45rem, 7vw, 2rem);
+    padding-left: 0;
+    text-align: center;
+    font-size: clamp(1.45rem,7vw,2rem);
     line-height: 1;
   }
 
-  .board-svg {
-    width: 100%;
-    height: auto;
-    max-height: 330px;
-  }
+  .board-svg { width: 100%; height: auto; max-height: 330px; }
+
+  /* The SVG labels themselves are now centered in index.html. */
+  #chatgpt .board-svg .chalk-text { dominant-baseline: middle; }
 
   .example {
-    padding-top: 22px;
-    margin-top: 2px;
-    gap: 10px;
+    padding-top: 30px;
+    margin-top: 10px;
+    gap: 12px;
+  }
+  .example-tag { font-size: .58rem; }
+  .example h3 { font-size: 1.48rem; }
+  .example p { font-size: .92rem; line-height: 1.58; }
+  .example-result { font-size: .8rem; }
+
+  .stage .stage-lab {
+    margin-top: 8px !important;
+    border-radius: 18px !important;
+    box-shadow: 0 18px 48px rgba(0,0,0,.28);
   }
 
-  .example-tag { font-size: .58rem; }
-  .example h3 { font-size: 1.38rem; }
-  .example p { font-size: .9rem; line-height: 1.55; }
-  .example-result { font-size: .77rem; }
+  .stage .lab-head { padding: 17px 16px 15px !important; gap: 8px !important; }
+  .stage .lab-head h3 { font-size: 1.18rem !important; line-height: 1.12; }
+  .stage .lab-head p { font-size: .77rem; line-height: 1.45; }
+  .stage .lab-tag { font-size: .55rem !important; }
+  .stage .lab-score { font-size: .58rem !important; }
+  .stage .lab-grid { grid-template-columns: 1fr !important; }
+  .stage .lab-pane { padding: 14px !important; }
+  .stage .lab-pane + .lab-pane { border-left: 0 !important; border-top: 1px solid #222; }
+  .stage .lab-textarea { min-height: 78px !important; font-size: .82rem; }
+  .stage .lab-select { font-size: .82rem; }
+  .stage .lab-actions { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px !important; }
+  .stage .lab-btn { min-height:40px; padding:8px 9px !important; font-size:.7rem !important; white-space:normal; line-height:1.15; }
+  .stage .lab-console { min-height:150px !important; max-height:255px; overflow:auto; padding:11px !important; font-size:10.5px !important; line-height:1.55 !important; }
+  .stage .checks { gap:6px !important; }
+  .stage .check { padding:8px !important; font-size:.72rem !important; }
+  .stage .steps { gap:5px !important; }
+  .stage .step { padding:7px 8px !important; font-size:.69rem !important; }
+  .stage .scenario { grid-template-columns:repeat(3,minmax(0,1fr)) !important; gap:5px !important; }
+  .stage .scenario button { font-size:.66rem; padding:8px 4px !important; }
 }
 
 @media (max-width: 390px) {
   .top-nav a { padding: 6px 7px; }
   body .journey .timeline-shell {
-    grid-template-columns: 86px minmax(0,1fr);
-    gap: 8px;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
+    grid-template-columns: 92px minmax(0,1fr);
+    gap: 10px;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
   }
-  body .journey .mobile-stage-readout strong { max-width: 82px; font-size: .64rem; }
-  .stage { padding-left: 13px; padding-right: 13px; }
+  body .journey .mobile-stage-readout strong { max-width: 88px; font-size: .7rem; }
+  .stage { padding-left: 13px !important; padding-right: 13px !important; }
   .stage .lab-actions { grid-template-columns: 1fr; }
 }
