@@ -1,8 +1,12 @@
 /* Mobile-first refinements for ai.oalfawzan.sa */
 @media (max-width: 680px) {
-  html { scroll-padding-top: 128px; }
+  /* Only the compact timeline stays sticky on phones. The global header
+     scrolls away so it cannot stack above the timeline and cover content. */
+  html { scroll-padding-top: 72px !important; }
 
   .site-header {
+    position: absolute !important;
+    top: 0;
     padding: 12px 14px;
     min-height: 56px;
     backdrop-filter: blur(18px);
@@ -12,26 +16,88 @@
   .top-nav { gap: 2px; }
   .top-nav a { padding: 7px 9px; font-size: .66rem; }
 
-  .timeline-shell {
-    top: 56px;
-    padding: 11px 8px 10px;
-    background: rgba(5,5,5,.94);
+  /* Compact single-row sticky stage navigator. Higher specificity and
+     !important are intentional because enhancements.css loads after this file. */
+  body .journey .timeline-shell {
+    top: 0 !important;
+    min-height: 58px;
+    padding: 7px 12px !important;
+    display: grid !important;
+    grid-template-columns: minmax(94px, auto) minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    background: rgba(5,5,5,.97);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border-bottom: 1px solid rgba(255,255,255,.08);
   }
 
-  .timeline-track { min-height: 52px; }
-  .timeline-track::before,
-  .timeline-progress { top: 20px; }
-  .timeline-point span { font-size: .88rem; }
-  .timeline-point i { width: 13px; height: 13px; }
-  .timeline-point b {
-    margin-top: 5px;
-    font-size: .43rem;
+  body .journey .mobile-stage-readout {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    padding: 0 !important;
+    min-width: 0;
+    color: var(--muted);
+    font-size: .61rem;
     line-height: 1.05;
-    max-width: 58px;
     letter-spacing: .08em;
+  }
+
+  body .journey .mobile-stage-readout strong {
+    color: var(--text);
+    font-size: .70rem;
+    line-height: 1.05;
+    max-width: 92px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  body .journey .timeline-track {
+    min-height: 44px !important;
+    height: 44px;
+  }
+
+  body .journey .timeline-track::before {
+    top: 50% !important;
+    left: 7% !important;
+    right: 7% !important;
+    transform: translateY(-50%);
+  }
+
+  body .journey .timeline-progress {
+    top: 50% !important;
+    left: 7% !important;
+    max-width: 86% !important;
+    transform: translateY(-50%);
+  }
+
+  body .journey .timeline-point {
+    min-height: 44px;
+    gap: 0 !important;
+    place-items: center;
+  }
+
+  body .journey .timeline-point span,
+  body .journey .timeline-point b { display: none !important; }
+
+  body .journey .timeline-point i {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  /* Every in-page destination clears the sticky timeline when navigated to. */
+  .stage,
+  .research-bridge,
+  .capability-section,
+  .labs-hub,
+  .same-model,
+  .interop-section,
+  .sources-section {
+    scroll-margin-top: 72px !important;
   }
 
   .stage {
@@ -39,10 +105,11 @@
     gap: 18px;
   }
 
-  .stage-copy { order: 1; }
-  .stage .stage-lab { order: 2; }
-  .stage .blackboard { order: 3; }
-  .stage .example { order: 4; }
+  /* Mobile learning order: concept → visual → example → lab. */
+  .stage-copy { order: 1 !important; }
+  .stage .blackboard { order: 2 !important; }
+  .stage .example { order: 3 !important; }
+  .stage .stage-lab { order: 4 !important; }
 
   .stage-copy h2 {
     font-size: clamp(2.15rem, 10.5vw, 3.2rem);
@@ -88,9 +155,7 @@
   .stage .lab-score { font-size: .58rem !important; }
 
   .stage .lab-grid { grid-template-columns: 1fr !important; }
-  .stage .lab-pane {
-    padding: 14px !important;
-  }
+  .stage .lab-pane { padding: 14px !important; }
 
   .stage .lab-pane + .lab-pane {
     border-left: 0 !important;
@@ -181,8 +246,13 @@
 
 @media (max-width: 390px) {
   .top-nav a { padding: 6px 7px; }
-  .timeline-point span { font-size: .8rem; }
-  .timeline-point b { font-size: .39rem; max-width: 52px; }
+  body .journey .timeline-shell {
+    grid-template-columns: 86px minmax(0,1fr);
+    gap: 8px;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  body .journey .mobile-stage-readout strong { max-width: 82px; font-size: .64rem; }
   .stage { padding-left: 13px; padding-right: 13px; }
   .stage .lab-actions { grid-template-columns: 1fr; }
 }
