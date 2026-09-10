@@ -1,0 +1,10 @@
+/* Focused UX/accessibility/performance-safe polish */
+.skip-link{position:fixed;left:16px;top:12px;z-index:999;transform:translateY(-180%);padding:10px 14px;border-radius:999px;background:#fff;color:#050505;font-weight:800;text-decoration:none}.skip-link:focus{transform:none}
+:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+.hero-proof{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;color:var(--muted);font-size:.76rem}.hero-proof span{padding:7px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(255,255,255,.025)}
+.hero-actions .primary-btn{min-width:178px}.hero-actions .text-link{min-height:46px;display:inline-flex;align-items:center;padding:0 10px;text-decoration:none;font-weight:700;color:var(--muted)}.hero-actions .text-link:hover{color:var(--text)}
+.stage,.research-bridge,.capability-section,.labs-hub,.same-model,.interop-section,.sources-section{content-visibility:auto;contain-intrinsic-size:900px}
+.timeline-point{min-width:44px;min-height:44px}.pattern-toggle button,.lab-btn,.scenario button{min-height:44px}
+.blackboard,.stage-lab,.system-card,.lab-card{transform:translateZ(0)}
+@media(max-width:760px){.hero-actions{display:grid}.hero-actions .primary-btn,.hero-actions .text-link{width:100%;justify-content:center}.hero-proof{justify-content:center}.timeline-point{min-height:48px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.noise{display:none}}
