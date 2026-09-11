@@ -2,16 +2,24 @@
 
 Interactive visual timeline explaining the modern AI application layer:
 
-- 2022 — ChatGPT / prompt interface
-- 2023 — Context engineering and RAG adoption
-- 2024 — Agents and tool loops
-- 2025 — Agentic coding
-- 2026 — Harness engineering
+- 2022: ChatGPT / prompt interface
+- 2023: Context engineering and RAG adoption
+- 2024: Agents and tool loops
+- 2025: Agentic coding
+- 2026: Harness engineering
 
 ## Design
 
-The site uses an original digital-blackboard visual language inspired by educational sketch explanations:
-dark background, hand-drawn SVG diagrams, animated timeline nodes, and scroll-driven storytelling.
+The site is part of the `oalfawzan.sa` ecosystem and shares the main portfolio's visual language: liquid-glass surfaces, blue atmospheric background, system typography, rounded controls, responsive spacing, and dark/light themes.
+
+The AI-specific educational identity is intentionally preserved inside the experience through dark digital-blackboard diagrams, hand-drawn visual explanations, semantic stage colors, the timeline, and interactive system labs.
+
+Shared ecosystem styling is isolated in:
+
+- `ecosystem.css`: design tokens, liquid-glass shell, typography, responsive behavior, accessibility states, and cross-site visual alignment.
+- `ecosystem.js`: shared dark/light theme behavior using the `oalfawzan-theme` storage key.
+
+The original `styles.css`, `mobile.css`, `enhancements.css`, `script.js`, and `enhancements.js` continue to provide the AI site's feature and interaction layer.
 
 ## Tech
 
@@ -32,7 +40,17 @@ python -m http.server 8080
 
 Open `http://localhost:8080`.
 
+## Visual QA targets
+
+Before deployment, review the full page at these viewport sizes:
+
+- 1920 x 1080
+- 1440 x 900
+- 768 x 1024
+- 390 x 844
+
+Check for horizontal overflow, clipped content, navigation wrapping, card alignment, typography, glass contrast, and interactive lab usability in both dark and light themes.
+
 ## Timeline note
 
-The years represent adoption waves in the modern LLM application layer, not the invention date of every technique.
-RAG, for example, predates ChatGPT.
+The years represent adoption waves in the modern LLM application layer, not the invention date of every technique. RAG, for example, predates ChatGPT.

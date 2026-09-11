@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>AI Evolution — From Chat to Reliable Autonomy</title>
   <meta name="description" content="An interactive systems journey from chat and grounding to agents, agentic coding, and the engineered harnesses that make autonomous work reliable.">
   <meta name="author" content="Omar Alfawzan">
-  <meta name="theme-color" content="#050505">
+  <meta name="theme-color" content="#1b2942">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://ai.oalfawzan.sa/">
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
@@ -20,19 +20,35 @@
   <meta name="twitter:description" content="An interactive visual journey through modern AI systems engineering.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (() => {
+      const key = 'oalfawzan-theme';
+      let saved = 'dark';
+      try { saved = localStorage.getItem(key) || 'dark'; } catch (_) {}
+      const theme = saved === 'light' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = theme;
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.content = theme === 'light' ? '#e7eff8' : '#1b2942';
+    })();
+  </script>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./mobile.css">
   <link rel="stylesheet" href="./enhancements.css">
+  <link rel="stylesheet" href="./ecosystem.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"AI Evolution by Omar Alfawzan","url":"https://ai.oalfawzan.sa/","description":"An interactive systems journey from chat to reliable autonomy."}</script>
 </head>
 <body>
+  <a class="skip-link" href="#top">Skip to content</a>
   <div class="noise" aria-hidden="true"></div>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="AI Evolution home"><span class="brand-mark">AI.</span><span class="brand-sub">oalfawzan.sa</span></a>
+    <a class="brand" href="#top" aria-label="AI Evolution home"><span class="brand-mark">Omar Alfawzan</span><span class="brand-sub">AI Systems</span></a>
     <nav class="top-nav" aria-label="Primary"><a href="https://oalfawzan.sa">Portfolio</a><a href="https://tools.oalfawzan.sa">Tools</a><a class="active" href="#journey">AI</a></nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
+      <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg>
+      <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
   </header>
-
   <main id="top">
     <section class="hero">
       <div class="hero-grid">
@@ -81,7 +97,7 @@
         <aside class="example"><span class="example-tag">ONE INCIDENT · STAGE 3</span><h3>“Keep my website healthy.”</h3><p>The agent checks health, inspects the proxy, follows the evidence, proposes a change and stops when success or a safety boundary is reached.</p><div class="example-result">Result → <strong>Bounded action</strong></div></aside>
       </article>
 
-      <article class="stage" id="coding" data-stage="3" data-accent="blue">
+      <article class="stage" id="agentic-coding" data-stage="3" data-accent="blue">
         <div class="stage-copy"><div class="stage-kicker">04 / 2025 · AGENTIC CODING</div><h2>The environment became part of the <em>intelligence.</em></h2><p>Repository access, shell execution, diffs, tests and persistent workspace state turn a general agent into a software-engineering system.</p><div class="stage-idea"><span>Capability</span><strong>AI could change and verify software.</strong></div></div>
         <div class="blackboard coding-board"><div class="chalk-title blue-text">Repository + Terminal + Diff + Tests</div><div class="mini-ide"><div class="ide-tree">▾ nginx<br>&nbsp;&nbsp;nginx.conf<br>▾ deployment<br>&nbsp;&nbsp;compose.yml<br>▾ tests<br>&nbsp;&nbsp;health.sh</div><pre class="ide-terminal">$ nginx -t
 syntax is ok
@@ -100,7 +116,7 @@ HTTP 200 ✓</pre><pre class="ide-diff">- app:3000
 
     <section class="capability-section" id="capabilities"><div class="section-intro"><div><span class="eyebrow">WHAT ACTUALLY CHANGED?</span><h2>Capability accumulated layer by layer.</h2><p>The progression is not simply “newer model = smarter product.” Each system adds a different engineering capability.</p></div></div><div class="capability-grid"><div class="cap-row cap-head"><b>Capability</b><b>Chat</b><b>Context</b><b>Agent</b><b>Coding</b><b>Harness</b></div><div class="cap-row"><span>Grounded evidence</span><i>○</i><i class="on">●</i><i class="on">●</i><i class="on">●</i><i class="on">●</i></div><div class="cap-row"><span>Executable tools</span><i>○</i><i>○</i><i class="on">●</i><i class="on">●</i><i class="on">●</i></div><div class="cap-row"><span>Environment modification</span><i>○</i><i>○</i><i>◐</i><i class="on">●</i><i class="on">●</i></div><div class="cap-row"><span>Verification</span><i>○</i><i>○</i><i>◐</i><i class="on">●</i><i class="on">●</i></div><div class="cap-row"><span>Durable recovery</span><i>○</i><i>○</i><i>○</i><i>◐</i><i class="on">●</i></div><div class="cap-row"><span>Policy & containment</span><i>○</i><i>○</i><i>◐</i><i>◐</i><i class="on">●</i></div><div class="cap-row"><span>Traceable evaluation</span><i>○</i><i>○</i><i>◐</i><i>◐</i><i class="on">●</i></div></div></section>
 
-    <section class="labs-hub" id="labs"><div class="section-intro"><div><span class="eyebrow">SYSTEM LABS</span><h2>Build the system yourself.</h2><p>Five labs use the same 502 incident. Each one exposes the new capability introduced at that stage.</p></div></div><div class="lab-card-grid"><a href="#chatgpt-lab" class="lab-card cyan-card"><span>01</span><strong>Prompt Engineering</strong><p>Change the prompt and compare the answer.</p><b>Open lab →</b></a><a href="#context-lab" class="lab-card yellow-card"><span>02</span><strong>Context Budget</strong><p>Choose evidence under a finite token budget.</p><b>Open lab →</b></a><a href="#agents-lab" class="lab-card green-card"><span>03</span><strong>Agent Loop</strong><p>Control permissions, steps and exit conditions.</p><b>Open lab →</b></a><a href="#coding-lab" class="lab-card blue-card"><span>04</span><strong>Coding Environment</strong><p>Inspect, edit, test and verify the fix.</p><b>Open lab →</b></a><a href="#harness-lab" class="lab-card pink-card"><span>05</span><strong>Harness Reliability</strong><p>Inject failures and engineer recovery.</p><b>Open lab →</b></a></div></section>
+    <section class="labs-hub" id="labs"><div class="section-intro"><div><span class="eyebrow">SYSTEM LABS</span><h2>Build the system yourself.</h2><p>Five labs use the same 502 incident. Each one exposes the new capability introduced at that stage.</p></div></div><div class="lab-card-grid"><a href="#chatgpt-lab" class="lab-card cyan-card"><span>01</span><strong>Prompt Engineering</strong><p>Change the prompt and compare the answer.</p><b>Open lab →</b></a><a href="#context-lab" class="lab-card yellow-card"><span>02</span><strong>Context Budget</strong><p>Choose evidence under a finite token budget.</p><b>Open lab →</b></a><a href="#agents-lab" class="lab-card green-card"><span>03</span><strong>Agent Loop</strong><p>Control permissions, steps and exit conditions.</p><b>Open lab →</b></a><a href="#agentic-coding-lab" class="lab-card blue-card"><span>04</span><strong>Coding Environment</strong><p>Inspect, edit, test and verify the fix.</p><b>Open lab →</b></a><a href="#harness-lab" class="lab-card pink-card"><span>05</span><strong>Harness Reliability</strong><p>Inject failures and engineer recovery.</p><b>Open lab →</b></a></div></section>
 
     <section class="same-model" id="same-model"><div class="same-model-head"><div><span class="eyebrow">THE CONTROLLED EXPERIMENT</span><h2>Same model.<br>Different system.</h2><p>Run the same incident through a naive agent loop and an engineered runtime.</p></div><button class="primary-btn" id="runSameModel">Run comparison</button></div><div class="system-compare"><div class="system-card naive"><span>SYSTEM A · NAIVE</span><h3>Model + tools + while loop</h3><pre id="naiveConsole" class="system-console">Ready.</pre></div><div class="system-card engineered"><span>SYSTEM B · ENGINEERED</span><h3>Same model + engineered runtime</h3><pre id="engineeredConsole" class="system-console">Ready.</pre></div></div><div class="same-model-reveal" id="sameModelReveal"></div></section>
 
@@ -112,5 +128,6 @@ HTTP 200 ✓</pre><pre class="ide-diff">- app:3000
   <footer><div><strong>AI Evolution</strong><span>Built by Omar Alfawzan · Riyadh</span></div><a href="#top">Back to top ↑</a></footer>
   <script src="./script.js"></script>
   <script src="./enhancements.js"></script>
+  <script src="./ecosystem.js"></script>
 </body>
 </html>
