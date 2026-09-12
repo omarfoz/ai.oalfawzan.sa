@@ -15,6 +15,13 @@
   .top-nav { gap: 2px; }
   .top-nav a { padding: 7px 9px; font-size: .66rem; }
 
+  .site-header .brand,
+  footer a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
   /* Reference-style compact mobile navigator. */
   body .journey .timeline-shell {
     top: 0 !important;
@@ -170,9 +177,10 @@
   .stage .lab-pane { padding: 14px !important; }
   .stage .lab-pane + .lab-pane { border-left: 0 !important; border-top: 1px solid #222; }
   .stage .lab-textarea { min-height: 78px !important; font-size: .82rem; }
-  .stage .lab-select { font-size: .82rem; }
+  .stage .lab-select,
+  .stage .agent-control select { min-height: 44px; font-size: .82rem; }
   .stage .lab-actions { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px !important; }
-  .stage .lab-btn { min-height:40px; padding:8px 9px !important; font-size:.7rem !important; white-space:normal; line-height:1.15; }
+  .stage .lab-btn { min-height:44px; padding:8px 9px !important; font-size:.7rem !important; white-space:normal; line-height:1.15; }
   .stage .lab-console { min-height:150px !important; max-height:255px; overflow:auto; padding:11px !important; font-size:10.5px !important; line-height:1.55 !important; }
   .stage .checks { gap:6px !important; }
   .stage .check { padding:8px !important; font-size:.72rem !important; }
