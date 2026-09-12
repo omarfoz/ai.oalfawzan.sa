@@ -84,8 +84,13 @@
     patternStage.append(copy,flow);
   }
 
+  patternButtons.forEach((btn,index) => btn.setAttribute('aria-pressed',String(index === 0)));
   patternButtons.forEach(btn => btn.addEventListener('click',()=>{
-    patternButtons.forEach(x=>x.classList.toggle('is-on',x===btn));
+    patternButtons.forEach(x=>{
+      const selected=x===btn;
+      x.classList.toggle('is-on',selected);
+      x.setAttribute('aria-pressed',String(selected));
+    });
     renderPattern(btn.dataset.pattern);
   }));
   renderPattern('workflow');
@@ -289,7 +294,15 @@
     scenarioDefs.forEach(([value,label],i)=>{
       const b=document.createElement('button');
       b.type='button'; b.dataset.s=value; b.textContent=label; if(i===0)b.className='on';
-      b.onclick=()=>{ harnessScenario=value; [...hScenario.children].forEach(x=>x.classList.toggle('on',x===b)); };
+      b.setAttribute('aria-pressed',String(i===0));
+      b.onclick=()=>{
+        harnessScenario=value;
+        [...hScenario.children].forEach(x=>{
+          const selected=x===b;
+          x.classList.toggle('on',selected);
+          x.setAttribute('aria-pressed',String(selected));
+        });
+      };
       hScenario.appendChild(b);
     });
   }
@@ -394,7 +407,7 @@
   };
 
   /* Same-model challenge */
-  const runSystems=$('runSystems'), naiveConsole=$('naiveConsole'), engineeredConsole=$('engineeredConsole'), systemReveal=$('systemReveal');
+  const runSystems=$('runSameModel'), naiveConsole=$('naiveConsole'), engineeredConsole=$('engineeredConsole'), systemReveal=$('sameModelReveal');
   if(runSystems) runSystems.onclick=async()=>{
     if(systemReveal) systemReveal.textContent='';
     setConsole(naiveConsole,[{text:'TASK     keep website healthy'}]);
@@ -413,5 +426,22 @@
   /* Make all lab buttons announce their purpose to assistive tech */
   document.querySelectorAll('.lab-btn').forEach(button=>{
     if(!button.getAttribute('aria-label')) button.setAttribute('aria-label',button.textContent.trim());
+  });
+
+  [
+    ['pInput','Incident prompt'],
+    ['pMode','Response mode'],
+    ['aMode','Agent permission'],
+    ['cIssue','Issue']
+  ].forEach(([id,text])=>{
+    const field=$(id);
+    const label=field?.previousElementSibling;
+    if(label?.classList.contains('lab-label')) label.setAttribute('for',id);
+    if(field && !field.getAttribute('aria-label')) field.setAttribute('aria-label',text);
+  });
+
+  document.querySelectorAll('.lab-console, .system-console, .same-model-reveal').forEach(output=>{
+    output.setAttribute('role','status');
+    output.setAttribute('aria-live','polite');
   });
 })();
