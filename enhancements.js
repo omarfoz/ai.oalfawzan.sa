@@ -17,7 +17,7 @@
   /* Timeline accessibility + readable mobile state */
   const stages = [...document.querySelectorAll('.stage')];
   const points = [...document.querySelectorAll('.timeline-point')];
-  const stageNames = ['CHAT','GROUNDING','AGENT','AGENTIC CODING','HARNESS'];
+  const stageNames = ['Chat','Grounding','Agent','Agentic coding','Harness'];
   const mobileCount = $('mobileStageCount');
   const mobileName = $('mobileStageName');
 
@@ -245,7 +245,7 @@
 
   function resetAgent() {
     if(aSteps) aSteps.replaceChildren();
-    if(aOut) aOut.textContent='LAB READY';
+    if(aOut) aOut.textContent='Lab ready';
   }
   if(aReset) aReset.onclick=resetAgent;
   if(aRun) aRun.onclick=async()=>{

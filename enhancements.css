@@ -146,9 +146,8 @@
   min-height: 50px;
   background: rgba(255,255,255,.035);
   color: var(--muted);
-  font-size: .67rem;
-  text-transform: uppercase;
-  letter-spacing: .08em;
+  font-size: .78rem;
+  letter-spacing: .01em;
 }
 .cap-head b:nth-child(2){color:var(--cyan)}
 .cap-head b:nth-child(3){color:var(--yellow)}
@@ -326,7 +325,7 @@
   border:1px solid #232328;
   border-radius:9px;
 }
-.lab-metric span { display:block; color:var(--muted); font-size:.58rem; text-transform:uppercase; letter-spacing:.06em; }
+.lab-metric span { display:block; color:var(--muted); font-size:.72rem; letter-spacing:.01em; }
 .lab-metric strong { display:block; margin-top:4px; font:700 .78rem ui-monospace; }
 .evidence-meta {
   display:block;
