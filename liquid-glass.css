@@ -1,0 +1,439 @@
+/*
+ * Liquid-glass visual unification layer
+ * Keeps the existing ai.oalfawzan.sa content and layout while making every
+ * diagram, technical panel and dense UI surface use the same glass material.
+ */
+
+/* Stage diagrams now use the same material system as the rest of the site. */
+.blackboard {
+  position: relative !important;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--stage-accent) 24%, rgba(255,255,255,.16)) !important;
+  border-radius: var(--site-radius-card) !important;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(255,255,255,.16), transparent 28%),
+    radial-gradient(circle at 82% 86%, color-mix(in srgb, var(--stage-accent) 15%, transparent), transparent 36%),
+    linear-gradient(145deg, rgba(255,255,255,.085), rgba(255,255,255,.018) 48%, rgba(4,18,38,.12)),
+    rgba(20,55,104,.20) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.34),
+    inset 0 -1px 0 rgba(255,255,255,.05),
+    0 18px 52px rgba(0,18,48,.24),
+    0 0 34px color-mix(in srgb, var(--stage-accent) 8%, transparent) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(185%) !important;
+  backdrop-filter: blur(28px) saturate(185%) !important;
+  color: var(--site-text) !important;
+}
+
+.blackboard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(118deg, rgba(255,255,255,.18), transparent 21% 72%, rgba(255,255,255,.06)),
+    radial-gradient(ellipse at 28% -12%, rgba(255,255,255,.22), transparent 36%);
+  opacity: .72;
+}
+
+.blackboard::after {
+  content: "";
+  position: absolute;
+  width: 46%;
+  aspect-ratio: 1;
+  right: -18%;
+  bottom: -52%;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--stage-accent) 22%, transparent);
+  filter: blur(56px);
+  opacity: .45;
+}
+
+.stage.is-current .blackboard {
+  border-color: color-mix(in srgb, var(--stage-accent) 52%, rgba(255,255,255,.18)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.38),
+    0 22px 58px rgba(0,18,48,.28),
+    0 0 38px color-mix(in srgb, var(--stage-accent) 12%, transparent) !important;
+}
+
+.chalk-title {
+  position: relative;
+  z-index: 2;
+  padding: 20px 22px 0 !important;
+  color: var(--stage-accent) !important;
+  text-shadow: 0 0 22px color-mix(in srgb, var(--stage-accent) 30%, transparent);
+}
+
+.board-svg {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Native glass SVG vocabulary used by every educational diagram. */
+.glass-node,
+.glass-core {
+  fill: rgba(255,255,255,.055);
+  stroke: rgba(255,255,255,.28);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 12px 20px rgba(0,10,35,.18));
+}
+
+.glass-node-accent,
+.glass-core {
+  stroke: var(--stage-accent);
+  filter:
+    drop-shadow(0 0 7px color-mix(in srgb, var(--stage-accent) 36%, transparent))
+    drop-shadow(0 12px 20px rgba(0,10,35,.20));
+}
+
+.glass-core {
+  fill: color-mix(in srgb, var(--stage-accent) 8%, rgba(255,255,255,.05));
+  stroke-width: 2.4;
+}
+
+.glass-connector {
+  fill: none;
+  stroke: color-mix(in srgb, var(--stage-accent) 72%, rgba(255,255,255,.28));
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  opacity: .88;
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--stage-accent) 28%, transparent));
+}
+
+.glass-connector-muted {
+  fill: none;
+  stroke: rgba(255,255,255,.24);
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+
+.glass-orbit {
+  fill: none;
+  stroke: color-mix(in srgb, var(--stage-accent) 46%, rgba(255,255,255,.18));
+  stroke-width: 1.4;
+  stroke-dasharray: 6 10;
+  vector-effect: non-scaling-stroke;
+  opacity: .72;
+}
+
+.glass-dot {
+  fill: var(--stage-accent);
+  filter: drop-shadow(0 0 7px var(--stage-accent));
+}
+
+.glass-label,
+.glass-small-label,
+.glass-icon {
+  fill: rgba(255,255,255,.92);
+  font-family: var(--site-font);
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.glass-label {
+  font-size: 25px;
+  font-weight: 650;
+  letter-spacing: -.02em;
+}
+
+.glass-small-label {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.glass-icon {
+  fill: color-mix(in srgb, var(--stage-accent) 88%, white);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* Legacy SVG shapes inherit the same glass treatment if still used. */
+.chalk-box,
+.chalk-circle,
+.harness-outer {
+  fill: rgba(255,255,255,.045) !important;
+  stroke: rgba(255,255,255,.28) !important;
+  stroke-width: 2 !important;
+  filter: drop-shadow(0 10px 18px rgba(0,10,35,.16));
+}
+
+.cyan-stroke,
+.yellow-stroke,
+.green-stroke,
+.blue-stroke,
+.pink-stroke {
+  stroke: var(--stage-accent) !important;
+  filter: drop-shadow(0 0 7px color-mix(in srgb, var(--stage-accent) 30%, transparent));
+}
+
+/* Coding environment: retain code readability without a detached black card. */
+.coding-board .mini-ide {
+  position: relative;
+  z-index: 2;
+  gap: 8px !important;
+  margin: 20px !important;
+  padding: 8px;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  border-radius: 18px !important;
+  background: rgba(255,255,255,.035) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
+  -webkit-backdrop-filter: blur(18px) saturate(165%);
+  backdrop-filter: blur(18px) saturate(165%);
+}
+
+.coding-board .ide-tree,
+.coding-board .ide-terminal,
+.coding-board .ide-diff {
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 13px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.012)),
+    rgba(2,12,30,.36) !important;
+  color: rgba(240,247,255,.86) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.coding-board .ide-diff {
+  color: color-mix(in srgb, var(--stage-accent) 84%, white) !important;
+}
+
+/* Remove remaining detached black surfaces from interactive sections. */
+.system-console,
+.lab-console,
+.context-budget,
+.lab-metric,
+.agent-control,
+.blast-panel,
+.pattern-flow span,
+.check,
+.step,
+.scenario button,
+.lab-textarea,
+.lab-select,
+.agent-control select {
+  border-color: rgba(255,255,255,.13) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.012)),
+    rgba(5,22,48,.24) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+
+.system-console,
+.lab-console {
+  color: rgba(235,244,255,.88) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  backdrop-filter: blur(14px) saturate(150%);
+}
+
+.pattern-flow span,
+.check,
+.step,
+.scenario button {
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  backdrop-filter: blur(12px) saturate(150%);
+}
+
+.pattern-flow .decision,
+.check.is-on,
+.step.is-on {
+  border-color: color-mix(in srgb, var(--site-accent) 46%, rgba(255,255,255,.15)) !important;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--site-accent) 13%, rgba(255,255,255,.05)), rgba(255,255,255,.015)),
+    rgba(5,22,48,.24) !important;
+}
+
+/* Cards and controls get one consistent specular edge and hover behavior. */
+.timeline-shell,
+.research-bridge,
+.pattern-stage,
+.capability-grid,
+.lab-card,
+.same-model,
+.system-card,
+.interop-diagram,
+.interop-node,
+.sources-section,
+.source-grid a,
+.example,
+.stage-lab {
+  position: relative;
+  overflow: hidden;
+}
+
+.lab-card,
+.system-card,
+.interop-node,
+.source-grid a,
+.example,
+.pattern-stage,
+.stage-lab {
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+.lab-card:hover,
+.interop-node:hover,
+.source-grid a:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,.22) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.24),
+    0 14px 34px rgba(0,18,48,.20) !important;
+}
+
+.primary-btn,
+.text-link,
+.top-nav a,
+.theme-toggle,
+.pattern-toggle,
+.pattern-toggle button,
+.lab-btn,
+.scenario button {
+  border-color: rgba(255,255,255,.15) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14);
+}
+
+.primary-btn,
+.top-nav a.active,
+.pattern-toggle button.is-on,
+.lab-btn.primary {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.18), rgba(255,255,255,.04)),
+    color-mix(in srgb, var(--site-accent) 72%, rgba(0,40,105,.38)) !important;
+  color: #fff !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.34),
+    0 8px 22px rgba(0,60,160,.20) !important;
+}
+
+/* Capability table and source cards use translucent row highlights instead of flat blocks. */
+.cap-head {
+  background: linear-gradient(90deg, rgba(255,255,255,.055), rgba(255,255,255,.018)) !important;
+}
+
+.cap-row:hover:not(.cap-head) {
+  background: rgba(255,255,255,.025);
+}
+
+.example-result {
+  padding: 8px 12px;
+  border: 1px solid color-mix(in srgb, var(--stage-accent) 24%, rgba(255,255,255,.12));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--stage-accent) 7%, rgba(255,255,255,.025));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+/* Light mode keeps the same physical material instead of turning diagrams into dark islands. */
+html[data-theme="light"] .blackboard {
+  border-color: color-mix(in srgb, var(--stage-accent) 22%, rgba(51,65,85,.18)) !important;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(255,255,255,.94), transparent 30%),
+    radial-gradient(circle at 82% 86%, color-mix(in srgb, var(--stage-accent) 11%, transparent), transparent 38%),
+    linear-gradient(145deg, rgba(255,255,255,.76), rgba(255,255,255,.46) 58%),
+    rgba(225,236,248,.48) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    inset 0 -1px 0 rgba(51,65,85,.05),
+    0 16px 38px rgba(38,55,78,.14) !important;
+}
+
+html[data-theme="light"] .glass-node,
+html[data-theme="light"] .glass-core,
+html[data-theme="light"] .chalk-box,
+html[data-theme="light"] .chalk-circle,
+html[data-theme="light"] .harness-outer {
+  fill: rgba(255,255,255,.42) !important;
+  stroke: rgba(51,65,85,.26) !important;
+}
+
+html[data-theme="light"] .glass-node-accent,
+html[data-theme="light"] .glass-core {
+  stroke: var(--stage-accent) !important;
+}
+
+html[data-theme="light"] .glass-label,
+html[data-theme="light"] .glass-small-label {
+  fill: #162033;
+}
+
+html[data-theme="light"] .glass-icon {
+  fill: color-mix(in srgb, var(--stage-accent) 75%, #162033);
+}
+
+html[data-theme="light"] .coding-board .mini-ide,
+html[data-theme="light"] .coding-board .ide-tree,
+html[data-theme="light"] .coding-board .ide-terminal,
+html[data-theme="light"] .coding-board .ide-diff,
+html[data-theme="light"] .system-console,
+html[data-theme="light"] .lab-console,
+html[data-theme="light"] .context-budget,
+html[data-theme="light"] .lab-metric,
+html[data-theme="light"] .agent-control,
+html[data-theme="light"] .blast-panel,
+html[data-theme="light"] .pattern-flow span,
+html[data-theme="light"] .check,
+html[data-theme="light"] .step,
+html[data-theme="light"] .scenario button,
+html[data-theme="light"] .lab-textarea,
+html[data-theme="light"] .lab-select,
+html[data-theme="light"] .agent-control select {
+  border-color: rgba(51,65,85,.14) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.80), rgba(255,255,255,.48)),
+    rgba(225,236,248,.58) !important;
+  color: #162033 !important;
+}
+
+/* Responsive diagrams: preserve legibility instead of shrinking them into tiny drawings. */
+@media (max-width: 680px) {
+  .blackboard {
+    border-radius: 20px !important;
+    -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+    backdrop-filter: blur(18px) saturate(160%) !important;
+  }
+
+  .chalk-title {
+    padding: 17px 14px 0 !important;
+    font-size: clamp(1.35rem,6.7vw,1.85rem) !important;
+  }
+
+  .board-svg {
+    min-height: 240px;
+  }
+
+  .glass-label { font-size: 24px; }
+  .glass-small-label { font-size: 19px; }
+
+  .coding-board .mini-ide {
+    margin: 14px !important;
+    padding: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-card,
+  .system-card,
+  .interop-node,
+  .source-grid a,
+  .example,
+  .pattern-stage,
+  .stage-lab {
+    transition: none !important;
+  }
+}
