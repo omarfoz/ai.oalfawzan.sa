@@ -1,0 +1,138 @@
+name: IndexNow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit-indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Submit changed pages to IndexNow
+        env:
+          DOMAIN: ai.oalfawzan.sa
+          INDEXNOW_KEY: d4ef889fa72cfc8a4eff22f0a790e47c
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import subprocess
+          import urllib.error
+          import urllib.parse
+          import urllib.request
+
+          domain = os.environ["DOMAIN"]
+          key = os.environ["INDEXNOW_KEY"]
+          event_name = os.environ.get("GITHUB_EVENT_NAME", "")
+          event_path = os.environ.get("GITHUB_EVENT_PATH", "")
+          sha = os.environ.get("GITHUB_SHA", "HEAD")
+          key_file = f"{key}.txt"
+          workflow_file = ".github/workflows/indexnow.yml"
+
+          def page_url(path):
+              path = path.replace("\\", "/").lstrip("/")
+              if path == "index.html":
+                  return f"https://{domain}/"
+              if path.endswith("/index.html"):
+                  folder = path[:-len("index.html")]
+                  return f"https://{domain}/" + urllib.parse.quote(folder, safe="/-._~")
+              if path.endswith(".html"):
+                  return f"https://{domain}/" + urllib.parse.quote(path, safe="/-._~")
+              return None
+
+          urls = set()
+          bootstrap = False
+
+          if event_name == "workflow_dispatch":
+              urls.add(f"https://{domain}/")
+          else:
+              before = None
+              after = sha
+              try:
+                  with open(event_path, "r", encoding="utf-8") as f:
+                      event = json.load(f)
+                  before = event.get("before")
+                  after = event.get("after") or sha
+              except Exception:
+                  pass
+
+              changed = []
+              if before and before != "0" * 40:
+                  try:
+                      changed = subprocess.check_output(
+                          ["git", "diff", "--name-only", before, after],
+                          text=True,
+                      ).splitlines()
+                  except subprocess.CalledProcessError:
+                      pass
+
+              if not changed:
+                  try:
+                      changed = subprocess.check_output(
+                          ["git", "diff", "--name-only", "HEAD^", "HEAD"],
+                          text=True,
+                      ).splitlines()
+                  except subprocess.CalledProcessError:
+                      changed = []
+
+              for path in changed:
+                  if path in (key_file, workflow_file):
+                      bootstrap = True
+                  url = page_url(path)
+                  if url:
+                      urls.add(url)
+
+              if not urls and bootstrap:
+                  urls.add(f"https://{domain}/")
+
+          urls = sorted(urls)
+          if not urls:
+              print("No changed HTML pages to submit.")
+              raise SystemExit(0)
+
+          if len(urls) > 10000:
+              raise SystemExit("Refusing to submit more than 10,000 URLs in one IndexNow request.")
+
+          payload = {
+              "host": domain,
+              "key": key,
+              "keyLocation": f"https://{domain}/{key}.txt",
+              "urlList": urls,
+          }
+
+          data = json.dumps(payload).encode("utf-8")
+          request = urllib.request.Request(
+              "https://api.indexnow.org/indexnow",
+              data=data,
+              headers={"Content-Type": "application/json; charset=utf-8"},
+              method="POST",
+          )
+
+          try:
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  status = response.status
+                  body = response.read().decode("utf-8", errors="replace")
+          except urllib.error.HTTPError as exc:
+              status = exc.code
+              body = exc.read().decode("utf-8", errors="replace")
+
+          print(f"Submitted {len(urls)} URL(s):")
+          for url in urls:
+              print(f"  {url}")
+          print(f"IndexNow HTTP status: {status}")
+          if body:
+              print(body)
+
+          if status not in (200, 202):
+              raise SystemExit(f"IndexNow submission failed with HTTP {status}")
+          PY
