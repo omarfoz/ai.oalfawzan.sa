@@ -10,7 +10,7 @@ function active(index) {
   });
   document.getElementById('mobileStageCount').textContent = String(index + 1).padStart(2, '0') + ' / 05';
   document.getElementById('mobileStageName').textContent = names[index];
-  document.getElementById('timelineProgress').style.width = (index / 4 * 84) + '%';
+  document.getElementById('timelineProgress').style.width = (index / 4 * 80) + '%';
 }
 points.forEach((point, i) => point.addEventListener('click', () => { active(i); stages[i].scrollIntoView({behavior: 'smooth'}); }));
 let scrollPending = false;

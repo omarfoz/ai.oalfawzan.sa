@@ -68,15 +68,15 @@
 
   body .journey .timeline-track::before {
     top: 50% !important;
-    left: 8% !important;
-    right: 8% !important;
+    left: 10% !important;
+    right: 10% !important;
     transform: translateY(-50%);
   }
 
   body .journey .timeline-progress {
     top: 50% !important;
-    left: 8% !important;
-    max-width: 84% !important;
+    left: 10% !important;
+    max-width: 80% !important;
     transform: translateY(-50%);
   }
 
@@ -135,9 +135,12 @@
   .stage-idea strong { font-size: 1.28rem; }
 
   .blackboard {
+    position: relative;
     margin: 8px 0 0;
     padding: 16px 8px 2px;
     border-radius: 18px;
+    -webkit-backdrop-filter: blur(14px) saturate(145%);
+    backdrop-filter: blur(14px) saturate(145%);
   }
 
   .chalk-title {
@@ -151,6 +154,7 @@
 
   /* The SVG labels themselves are now centered in index.html. */
   #chatgpt .board-svg .chalk-text { dominant-baseline: middle; }
+  #chatgpt .board-svg .chalk-box { fill: rgba(255,255,255,.06); }
 
   .example {
     padding-top: 30px;
