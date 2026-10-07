@@ -727,3 +727,22 @@ footer a { color: var(--site-text-muted) !important; text-decoration: none; }
   .board-svg { margin: -16px 0; }
   .example-result { grid-column: 1 !important; grid-row: auto !important; }
 }
+
+/* Mobile navigation stays in the document, so it cannot cover reading content. */
+@media (max-width: 700px), (pointer: coarse) {
+  body .journey .timeline-shell {
+    position: relative !important;
+    top: auto !important;
+    z-index: 1;
+    margin-bottom: 20px !important;
+    min-height: 56px;
+  }
+  .stage { padding: 30px 0 !important; scroll-margin-top: 20px !important; }
+  .stage h2 { font-size: clamp(1.65rem, 7.5vw, 2rem) !important; line-height: 1.12 !important; }
+  .stage .lab-head { padding: 14px 16px !important; }
+  .stage .lab-pane { padding: 14px 16px !important; }
+  .stage .lab-actions { display: flex !important; margin-top: 0; }
+  .stage .lab-btn { width: auto; padding: 10px 16px !important; }
+  .demo-output { min-height: 0; font-size: .88rem; line-height: 1.6; margin-top: 14px; }
+  .research-bridge, .capability-section, .labs-hub, .same-model, .interop-section, .sources-section { margin-top: 36px !important; margin-bottom: 36px !important; }
+}
