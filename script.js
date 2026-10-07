@@ -13,10 +13,21 @@ function active(index) {
   document.getElementById('timelineProgress').style.width = (index / 4 * 84) + '%';
 }
 points.forEach((point, i) => point.addEventListener('click', () => { active(i); stages[i].scrollIntoView({behavior: 'smooth'}); }));
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if (entry.isIntersecting) active(Number(entry.target.dataset.stage)); });
-}, {rootMargin: '-15% 0px -65%'});
-stages.forEach(stage => observer.observe(stage));
+let scrollPending = false;
+function updateStage() {
+  scrollPending = false;
+  const readingLine = Math.min(180, window.innerHeight * .25);
+  let index = 0;
+  stages.forEach((stage, i) => {
+    if (stage.getBoundingClientRect().top <= readingLine) index = i;
+  });
+  active(index);
+}
+window.addEventListener('scroll', () => {
+  if (!scrollPending) { scrollPending = true; requestAnimationFrame(updateStage); }
+}, {passive: true});
+window.addEventListener('resize', updateStage);
+window.addEventListener('load', updateStage);
 active(0);
 
 const demos = [
