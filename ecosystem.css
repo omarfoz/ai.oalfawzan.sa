@@ -820,13 +820,15 @@ footer a { color: var(--site-text-muted) !important; text-decoration: none; }
   .site-header {
     position: absolute !important;
     top: 12px !important;
-    width: calc(100% - 28px) !important;
+    width: calc(100% - 32px) !important;
     grid-template-columns: minmax(0,1fr) auto !important;
     gap: 7px 8px !important;
     padding: 10px 12px !important;
     border-radius: 26px !important;
   }
   .brand { grid-column: 1; grid-row: 1; }
+  /* Match the portfolio's compact first row, not the generic 44px link height. */
+  .site-header .brand { min-height: 0; }
   .brand-mark { font-size: 1rem !important; }
   .brand-sub { display: none; }
   .theme-toggle { grid-column: 2; grid-row: 1; width: 32px; height: 32px; }
@@ -876,8 +878,8 @@ footer a { color: var(--site-text-muted) !important; text-decoration: none; }
 }
 
 @media (pointer: coarse) {
-  .theme-toggle,
-  .top-nav a,
+  /* Keep larger touch controls in the content, but mirror the main site's
+     32px theme button and 34px navigation pills in the header. */
   .primary-btn,
   .text-link,
   .lab-btn,
@@ -888,8 +890,13 @@ footer a { color: var(--site-text-muted) !important; text-decoration: none; }
   }
 
   .theme-toggle {
-    width: 44px;
-    height: 44px;
+    min-height: 32px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .top-nav a {
+    min-height: 34px;
   }
 
   .check {
